@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>American Ask4 Logistics - Home</title>
+    <link rel="icon" type="image/png" href="/src/assets/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+
+    <script src="App.js" defer></script>
+    <link href="./output.css" rel="stylesheet">
+    <script src="Main.js" defer></script>
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-chubby/css/uicons-regular-chubby.css'>
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <style>
+        :root {
+            --primary-blue: #1A237E;
+            --secondary-red: #FF3D3D;
+            --accent-gold: #FFD54F;
+            --background-white: #F8F9FA;
+            --text-black: #212121;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background-color: #F8F9FA;
+        }
+
+        /* Target the home section for the dynamic background */
+        #home-section {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        /* Add this to your CSS file or style tag */
+        .slideshow-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            animation: slideshow-fade 30s infinite;
+            animation-timing-function: ease-in-out;
+            z-index: -1;
+        }
+
+        /* Define different background images for different animation delays */
+        /* Update all animation delays to be staggered */
+        .slideshow-background:nth-child(1) {
+            background-image: url('/src/assets/Truck.Webp');
+            animation-delay: 0s;
+        }
+
+        .slideshow-background:nth-child(2) {
+            background-image: url('/src/assets/1stimg.Webp');
+            animation-delay: 3.5s;
+        }
+
+        .slideshow-background:nth-child(3) {
+            background-image: url('/src/assets/Tunnel.Webp');
+            animation-delay: 7.5s;
+        }
+
+        .slideshow-background:nth-child(4) {
+            background-image: url('/src/assets/ing.Webp');
+            animation-delay: 10s;
+        }
+
+        .slideshow-background:nth-child(5) {
+            background-image: url('/src/assets/imgRV.Webp');
+            animation-delay: 14.5s;
+        }
+
+        .slideshow-background:nth-child(6) {
+            background-image: url('/src/assets/imgLC.Webp');
+            animation-delay: 18s;
+        }
+
+        .slideshow-background:nth-child(7) {
+            background-image: url('/src/assets/imgB.Webp');
+            animation-delay: 22.5s;
+        }
+
+        .slideshow-background:nth-child(8) {
+            background-image: url('/src/assets/img.Webp');
+            animation-delay: 25s;
+        }
+
+        /* Keyframe animation for smooth fade */
+        @keyframes slideshow-fade {
+            0% {
+                opacity: 0;
+                transform: scale(1.05);
+            }
+
+            8% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            33% {
+                opacity: 1;
+                transform: scale(1.05);
+
+            }
+
+            41% {
+                opacity: 0;
+                transform: scale(1);
+
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.05);
+
+            }
+        }
+
+        /* ============================================= */
+        /* SCROLL ANIMATION STYLES - SLOWER VERSION */
+        /* ============================================= */
+
+        /* Base state - elements start INVISIBLE (except home section) */
+        .scroll-animate:not(#home-section .scroll-animate):not(.animated),
+        .scroll-animate-left:not(#home-section .scroll-animate-left):not(.animated),
+        .scroll-animate-right:not(#home-section .scroll-animate-right):not(.animated) {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-animate:not(#home-section .scroll-animate):not(.animated) {
+            transform: translateY(40px);
+        }
+
+        .scroll-animate-left:not(#home-section .scroll-animate-left):not(.animated) {
+            transform: translateX(-40px);
+        }
+
+        .scroll-animate-right:not(#home-section .scroll-animate-right):not(.animated) {
+            transform: translateX(40px);
+        }
+
+        /* ANIMATED STATE - INCREASED DURATION FROM 0.8s TO 1.2s */
+        .scroll-animate,
+        .scroll-animate-left,
+        .scroll-animate-right {
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-animate.animated,
+        .scroll-animate-left.animated,
+        .scroll-animate-right.animated {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translate(0) !important;
+        }
+
+        /* Home section elements should be visible immediately */
+        #home-section .scroll-animate,
+        #home-section .scroll-animate-left,
+        #home-section .scroll-animate-right {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(0);
+        }
+
+        /* Add staggered delays between elements in same section */
+        section .scroll-animate:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        section .scroll-animate:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        section .scroll-animate:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        section .scroll-animate:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        section .scroll-animate:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+
+        /* ============================================= */
+        /* SIMPLE WORKING SECTION */
+        /* ============================================= */
+
+        /* Simple Beige Background */
+        #working-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #working-section>.absolute {
+            transform: translateZ(0);
+            pointer-events: none;
+        }
+
+        /* Performance Optimized Animations */
+        #working-section .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            will-change: opacity, transform;
+        }
+
+        #working-section .scroll-animate.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered Delays */
+        #working-section .process-step[data-step="1"] {
+            transition-delay: 0.1s;
+        }
+
+        #working-section .process-step[data-step="2"] {
+            transition-delay: 0.3s;
+        }
+
+        #working-section .process-step[data-step="3"] {
+            transition-delay: 0.5s;
+        }
+
+        #working-section .process-step[data-step="4"] {
+            transition-delay: 0.7s;
+        }
+
+        /* Simple Card Styles */
+        #working-section .bg-white {
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        #working-section .bg-white:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Simple CTA Button */
+        #working-section a[href="#order-section"] {
+            transition: all 0.3s ease;
+        }
+
+        /* Image Optimization */
+        #working-section img {
+            transform: translateZ(0);
+        }
+
+        /* Performance: Prevent layout shifts */
+        #working-section * {
+            box-sizing: border-box;
+        }
+
+        .-z-1 {
+            z-index: -1;
+        }
+
+        .origin-0 {
+            transform-origin: 0%;
+        }
+
+        input:focus~label,
+        input:not(:placeholder-shown)~label,
+        textarea:focus~label,
+        textarea:not(:placeholder-shown)~label,
+        select:focus~label,
+        select:not([value='']):valid~label {
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+            --tw-scale-x: 0.75;
+            --tw-scale-y: 0.75;
+            --tw-translate-y: -1.5rem;
+        }
+
+        input:focus~label,
+        select:focus~label {
+            --tw-text-opacity: 1;
+            color: rgba(0, 0, 0, var(--tw-text-opacity));
+            left: 0px;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* ============================================= */
+        /* SIMPLE WORKING SECTION  */
+        /* ============================================= */
+        .marquee {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 30s linear infinite;
+        }
+
+        .marquee-content:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Ensure proper spacing between cards */
+        .marquee-content>div {
+            display: inline-block;
+            white-space: normal;
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body class="bg-[#F8F9FA]">
+    <header class="text-[#212121] bg-white body-font shadow-md">
+        <div class="container mx-auto flex items-center justify-between h-20 px-5 relative z-10">
+            <a href="/index.html" class="flex items-center">
+                <img src="/src/assets/logo.png" alt="American Ask4 Logistics Logo"
+                    class="h-[100px] w-auto mt-2 object-contain" />
+            </a>
+            <!-- Desktop Navigation Links (Hidden on mobile, visible on medium screens and up) -->
+            <nav class="hidden md:flex flex-wrap items-center text-base justify-center">
+                <a id="desktop-home-link" href="#home-section"
+                    class="mr-6 hover:text-[#FF3D3D] cursor-pointer transition duration-300 font-medium text-[#212121] text-base lg:text-lg xl:text-xl 2xl:text-2xl">Home</a>
+                <a id="desktop-order-link" href="#order-section"
+                    class="mr-6 hover:text-[#FF3D3D] cursor-pointer transition duration-300 font-medium text-[#212121] text-base lg:text-lg xl:text-xl 2xl:text-2xl">Order</a>
+                <a id="desktop-services-link" href="#services-section"
+                    class="mr-6 hover:text-[#FF3D3D] cursor-pointer transition duration-300 font-medium text-[#212121] text-base lg:text-lg xl:text-xl 2xl:text-2xl">Services</a>
+                <a id="desktop-working-link" href="#working-section"
+                    class="mr-6 hover:text-[#FF3D3D] cursor-pointer transition duration-300 font-medium text-[#212121] text-base lg:text-lg xl:text-xl 2xl:text-2xl">How
+                    it's work</a>
+                <a id="desktop-reviews-link" href="#reviews-section"
+                    class="mr-6 hover:text-[#FF3D3D] cursor-pointer transition duration-300 font-medium text-[#212121] text-base lg:text-lg xl:text-xl 2xl:text-2xl">Reviews</a>
+
+                <a id="desktop-Privacy-link" href="/Privacy.html"
+                    class="mr-6 hover:text-[#FF3D3D] cursor-pointer transition duration-300 font-medium text-[#212121] text-base lg:text-lg xl:text-xl 2xl:text-2xl">Privacy
+                    Policy</a>
+                <a href="tel:+12096440006" title="none"
+                    class="mr-6 hover:text-[#FF3D3D] cursor-pointer transition duration-300 font-medium text-[#212121] text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+                    <i class="fi fi-rc-phone-call"></i>Free Consultation</a>
+                <a href="mailto:info@AmericanASK4Logistics.us" title="none"
+                    class="mr-6 hover:text-[#FF3D3D] cursor-pointer transition duration-300 font-medium text-[#212121] text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+                    <i class="fi fi-rr-envelopes"></i>Email for Estimate</a>
+
+            </nav>
+
+            <!-- Action Button (Always visible) -->
+
+            <!-- Burger Menu Button (Visible on mobile screens only) -->
+            <button id="burger-menu-button" title="Button"
+                class="md:hidden inline-flex items-center ml-3 bg-white border border-[#1A237E] py-2 px-3 focus:outline-none
+                hover:bg-[#FF3D3D] hover:text-white hover:border-[#FF3D3D] rounded text-base shadow-sm transition duration-300">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-6 h-6 text-[#1A237E]" viewBox="0 0 24 24">
+                    <path d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Sidebar Menu (Starts hidden off-screen) -->
+        <div id="mobile-sidebar"
+            class="fixed top-0 right-0 h-full w-64 bg-[#1A237E] shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50">
+            <nav class="flex flex-col p-5 space-y-4">
+                <h2 class="text-white font-bold text-xl mb-6 border-b border-[#FF3D3D] pb-2">Menu</h2>
+                <a id="mobile-home-link" href="#home-section"
+                    class="text-white hover:text-[#FF3D3D] cursor-pointer py-2 px-3 hover:bg-white/10 rounded transition duration-300 text-lg font-medium">Home</a>
+                <a id="mobile-order-link" href="#order-section"
+                    class="text-white hover:text-[#FF3D3D] cursor-pointer py-2 px-3 hover:bg-white/10 rounded transition duration-300 text-lg font-medium">Order</a>
+                <a id="mobile-services-link" href="#services-section"
+                    class="text-white hover:text-[#FF3D3D] cursor-pointer py-2 px-3 hover:bg-white/10 rounded transition duration-300 text-lg font-medium">Services</a>
+                <a id="mobile-reviews-link" href="#reviews-section"
+                    class="text-white hover:text-[#FF3D3D] cursor-pointer py-2 px-3 hover:bg-white/10 rounded transition duration-300 text-lg font-medium">Reviews</a>
+
+                <a id="mobile-Privacy-link" href="/Privacy.html"
+                    class="text-white hover:text-[#FF3D3D] cursor-pointer py-2 px-3 hover:bg-white/10 rounded transition duration-300 text-lg font-medium">Privacy
+                    Policy</a>
+                <a href="tel:+12096440006" title="Call for Free Consultation"
+                    class="text-white hover:text-[#FF3D3D] cursor-pointer py-2 px-3 hover:bg-white/10 rounded transition duration-300 text-lg font-medium flex items-center">
+                    <i class="fi fi-rc-phone-call mr-3 text-[#FF3D3D]"></i>
+                    Free Consultation
+                </a>
+
+                <a href="mailto:quote@xyzships.com" title="Email for Estimate"
+                    class="text-white hover:text-[#FF3D3D] cursor-pointer py-2 px-3 hover:bg-white/10 rounded transition duration-300 text-lg font-medium flex items-center">
+                    <i class="fi fi-rr-envelopes mr-3 text-[#FF3D3D]"></i>
+                    Email for Estimate
+                </a>
+            </nav>
+        </div>
+
+        <!-- Overlay/Backdrop (Starts hidden, full screen, dark) -->
+        <div id="sidebar-overlay"
+            class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden z-40">
+        </div>
+    </header>
+
+    <div class="bg-gray-300 p-1 sm:p-2 flex items-center justify-center h-6">
+        <marquee behavior="scroll" direction="left" loop class="font-semibold text-sm tracking-wide text-[#212121]">
+            • FREE INSTANT QUOTES • NATIONWIDE AUTO TRANSPORT • ENCLOSED & OPEN CARRIERS • 24/7 VEHICLE TRACKING •
+            LUXURY & CLASSIC CAR SHIPPING • MOTORCYCLE TRANSPORT • RV & BOAT SHIPPING • NO HIDDEN FEES •
+        </marquee>
+    </div>
+    <section id="home-section" class="text-white p-4 sm:p-8 flex items-center justify-center min-h-screen">
+        <!-- Background container -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="slideshow-background"></div>
+            <div class="slideshow-background"></div>
+            <div class="slideshow-background"></div>
+            <div class="slideshow-background"></div>
+            <div class="slideshow-background"></div>
+            <div class="slideshow-background"></div>
+            <div class="slideshow-background"></div>
+            <div class="slideshow-background"></div>
+        </div>
+        <!-- Content container - REMOVED width limitations -->
+        <div class="relative z-10 w-full flex items-center justify-center">
+            <div class="w-full px-5 py-24 flex flex-col items-center justify-center text-center">
+                <div class="w-full max-w-4xl mx-auto flex flex-col items-center">
+                    <h1
+                        class="title-font sm:text-6xl text-4xl md:text-5xl lg:text-7xl mb-6 font-bold text-white tracking-tight">
+                        American ASK4 Logistics
+                    </h1>
+                    <h3 class="mb-8 leading-relaxed text-white max-w-3xl"> Premium vehicle shipping solutions across all
+                        50 states. Trust our certified logistics team for
+                        safe, reliable, and affordable car transportation services. From classic cars to commercial
+                        fleets,
+                        we deliver excellence in every mile.</h3>
+                    <div class="mt-6">
+                        <a href="#order-section"
+                            class="inline-flex items-center px-6 py-3 text-base font-bold text-white bg-[#FF3D3D] rounded-lg shadow-lg hover:bg-[#e03535] transform hover:-translate-y-1 transition-all duration-300">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            GET INSTANT FREE SHIPPING QUOTE
+                        </a>
+                        <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                                <div class="text-2xl font-bold text-[#FFD54F]">50+</div>
+                                <div class="text-sm text-white">States Served</div>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                                <div class="text-2xl font-bold text-[#FFD54F]">850+</div>
+                                <div class="text-sm text-white">Vehicles Transported</div>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                                <div class="text-2xl font-bold text-[#FFD54F]">24/7</div>
+                                <div class="text-sm text-white">Customer Support</div>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                                <div class="text-2xl font-bold text-[#FFD54F]">99.7%</div>
+                                <div class="text-sm text-white">On-Time Delivery</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="order-section"
+        class="bg-[#1A237E] text-white p-4 sm:p-8 flex items-center justify-center min-h-screen">
+        <div class="w-full max-w-6xl mx-auto">
+            <div class="flex flex-col lg:flex-row gap-8 lg:gap-8">
+                <!-- Left Content: Benefits/Info (Reduced width) -->
+                <div class="lg:w-1/4 scroll-animate mt-20 mb-20">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-lg p-5 h-full">
+                        <h3 class="text-xl font-bold mb-5 text-[#FFD54F] flex items-center">
+                            <i class="fas fa-star mr-2"></i>Why Choose Us
+                        </h3>
+                        <div class="space-y-5">
+                            <div class="flex items-start">
+                                <div class="bg-[#FFD54F] text-[#1A237E] rounded-full p-1.5 mr-3 flex-shrink-0">
+                                    <i class="fas fa-shield-alt text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-base mb-1">Fully Insured</h4>
+                                    <p class="text-white/80 text-xs">$250,000+ cargo insurance</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-[#FFD54F] text-[#1A237E] rounded-full p-1.5 mr-3 flex-shrink-0">
+                                    <i class="fas fa-clock text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-base mb-1">24/7 Tracking</h4>
+                                    <p class="text-white/80 text-xs">Real-time GPS monitoring</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-[#FFD54F] text-[#1A237E] rounded-full p-1.5 mr-3 flex-shrink-0">
+                                    <i class="fas fa-dollar-sign text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-base mb-1">No Hidden Fees</h4>
+                                    <p class="text-white/80 text-xs">All-inclusive pricing</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-[#FFD54F] text-[#1A237E] rounded-full p-1.5 mr-3 flex-shrink-0">
+                                    <i class="fas fa-truck text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-base mb-1">Nationwide</h4>
+                                    <p class="text-white/80 text-xs">All 50 states covered</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-5 border-t border-white/20">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="text-center">
+                                    <div class="text-lg font-bold text-[#FFD54F]">850+</div>
+                                    <div class="text-xs text-white/80">Vehicles</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-lg font-bold text-[#FFD54F]">99.7%</div>
+                                    <div class="text-xs text-white/80">On-Time</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-lg font-bold text-[#FFD54F]">4.9★</div>
+                                    <div class="text-xs text-white/80">Rating</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trust & Safety Section Added Here -->
+                        <div class="mt-6 pt-5 border-t border-white/20">
+                            <h4 class="font-bold text-base mb-3 text-white flex items-center">
+                                <i class="fas fa-award mr-2"></i>Trust & Safety
+                            </h4>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="text-center p-2 bg-white/5 rounded-lg">
+                                    <div class="text-[#FFD54F] text-base mb-1">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <div class="text-xs text-white/80">FMCSA Licensed</div>
+                                </div>
+                                <div class="text-center p-2 bg-white/5 rounded-lg">
+                                    <div class="text-[#FFD54F] text-base mb-1">
+                                        <i class="fas fa-lock"></i>
+                                        
+                                    </div>
+                                    <div class="text-xs text-white/80">Secure Payment</div>
+                                </div>
+                                <div class="text-center p-2 bg-white/5 rounded-lg">
+                                    <div class="text-[#FFD54F] text-base mb-1">
+                                        <i class="far fa-check-circle"></i> 
+                                    </div>
+                                    <div class="text-xs text-white/80">BBB Accredited</div>
+                                </div>
+                                <div class="text-center p-2 bg-white/5 rounded-lg">
+                                    <div class="text-[#FFD54F] text-base mb-1 ">
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <div class="text-xs text-white/80">5-Star Reviews</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Center: Form (Increased width) -->
+                <div class="lg:w-1/2">
+                    <div
+                        class="scroll-animate w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg shadow-xl relative z-10">
+                        <div class="max-w-full mx-auto">
+                            <h2 class="text-center text-3xl md:text-4xl font-bold mb-4 text-white">
+                                Get <span class="text-[#FFD54F]">Free</span> Auto Transport Quote
+                            </h2>
+                            <p class="text-center text-white/90 mb-6 text-sm">
+                                Fast, accurate pricing for all vehicle types. No commitment required.
+                            </p>
+
+                            <form id="shippingForm" onsubmit="return false" class="space-y-4 md:space-y-5">
+                                <!-- First row: Name, Email, Phone -->
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+                                    <div>
+                                        <label for="name" class="block text-xs font-bold text-white mb-1">Name *</label>
+                                        <input type="text" id="name" name="name" placeholder="Enter your full name"
+                                            required
+                                            class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E] focus:border-[#1A237E] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-xs font-bold text-white mb-1">Email
+                                            *</label>
+                                        <input type="email" id="email" name="email"
+                                            placeholder="Enter your email address" required
+                                            class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E] focus:border-[#1A237E] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
+                                    </div>
+                                    <div>
+                                        <label for="phone" class="block text-xs font-bold text-white mb-1">Phone Number
+                                            *</label>
+                                        <input type="tel" id="phone" name="phone" placeholder="(XXX) XXX-XXXX" required
+                                            class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E] focus:border-[#1A237E] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
+                                    </div>
+                                </div>
+                                <!-- Second row: Vehicle Details and Condition -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                                    <div>
+                                        <label for="car_details" class="block text-xs font-bold text-white mb-1">Vehicle
+                                            Make,
+                                            Model, Year *</label>
+                                        <input type="text" id="car_details" name="car_details"
+                                            placeholder="e.g., 2020 Honda Civic" required
+                                            class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E] focus:border-[#1A237E] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
+                                    </div>
+                                    <div>
+                                        <label for="car_condition"
+                                            class="block text-xs font-bold text-white mb-1">Vehicle
+                                            Condition *</label>
+                                        <select id="car_condition" name="car_condition" required
+                                            class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E] focus:border-[#1A237E] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm cursor-pointer">
+                                            <option value="" disabled selected class="text-gray-600">Select Condition
+                                            </option>
+                                            <option value="running" class="text-[#212121]">Running</option>
+                                            <option value="not_running" class="text-[#212121]">Not Running (Inoperable)
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Third row: Transport From and To -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                                    <div>
+                                        <label for="from_zip" class="block text-xs font-bold text-white mb-1">Pickup
+                                            Location
+                                            *</label>
+                                        <input type="text" id="from_zip" name="from_zip"
+                                            placeholder="Transport car FROM (zip code or city)" required
+                                            class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#FF3D3D] focus:border-[#FF3D3D] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
+                                    </div>
+                                    <div>
+                                        <label for="to_zip" class="block text-xs font-bold text-white mb-1">Delivery
+                                            Location
+                                            *</label>
+                                        <input type="text" id="to_zip" name="to_zip" placeholder="State / Zipcode"
+                                            required
+                                            class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#FF3D3D] focus:border-[#FF3D3D] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
+                                    </div>
+                                </div>
+
+                                <!-- Fourth row: Pickup Date and Transport Type -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                                    <div>
+                                        <label for="pickup_date"
+                                            class="block text-xs font-bold text-white mb-1">Preferred
+                                            Pickup
+                                            Date</label>
+                                        <input type="date" id="pickup_date" name="pickup_date"
+                                            class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E] focus:border-[#1A237E] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
+                                    </div>
+                                    <div>
+                                        <label for="vehicle_details"
+                                            class="block text-xs font-bold text-white mb-1">Vehicle
+                                            Details *</label>
+                                        <textarea id="vehicle_details" name="vehicle_details"
+                                            placeholder="Modifications, and any access restrictions etc." required
+                                            rows="3"
+                                            class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E] focus:border-[#1A237E] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm resize-y"></textarea>
+                                    </div>
+
+                                    <div class="md:col-span-2">
+                                        <label class="block text-xs font-bold text-white mb-2">Transport type</label>
+                                        <div class="flex items-center space-x-6">
+                                            <div class="flex items-center">
+                                                <input id="transport_open" name="transport_type" type="radio"
+                                                    title="Select" value="Open" checked
+                                                    class="h-4 w-4 text-[#FF3D3D] focus:ring-[#1A237E] border-gray-400 bg-white/90">
+                                                <span class="ml-2 text-sm font-medium text-white">Open Carrier</span>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="transport_enclosed" name="transport_type" type="radio"
+                                                    title="Select" value="Enclosed"
+                                                    class="h-4 w-4 text-[#1A237E] focus:ring-[#1A237E] border-gray-400 bg-white/90">
+                                                <span class="ml-2 text-sm font-medium text-white">Enclosed
+                                                    Carrier</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Checkboxes - full width on all screens -->
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <div class="flex items-center h-5">
+                                            <input id="sms_consent" name="sms_consent" type="checkbox" required
+                                                class="focus:ring-[#FF3D3D]  h-4 w-4 text-[#FF3D3D] border-gray-400 rounded bg-white/90">
+                                        </div>
+                                        <div class="ml-3 text-xs">
+                                            <label for="sms_consent" class="font-medium text-white cursor-pointer">By
+                                                checking
+                                                this
+                                                box, I agree to receive SMS messages about auto transportation from
+                                                American Ask4 Logistics at the
+                                                phone
+                                                number provided. The SMS frequency may vary. Data rates may apply. Text
+                                                HELP to
+                                                (209)
+                                                644-0006 for assistance. Reply STOP to opt out of receiving SMS
+                                                messages.</label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Privacy Policy Checkbox (with link styling) -->
+                                    <div class="flex items-start">
+                                        <div class="flex items-center h-5">
+                                            <input id="privacy_policy" name="privacy_policy" type="checkbox" required
+                                                class="focus:ring-[#FF3D3D] h-4 w-4 text-[#FF3D3D] border-gray-400 rounded bg-white/90">
+                                        </div>
+                                        <div class="ml-3 text-xs">
+                                            <label for="privacy_policy" class="font-medium text-white cursor-pointer">
+                                                I have read and agreed to the privacy policy.
+                                                <a href="/Privacy.html"
+                                                    class="text-[#FF3D3D] hover:text-[#FF3D3D] underline ml-1 font-bold">View
+                                                    Privacy
+                                                    Policy</a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button - full width on all screens -->
+                                <div>
+                                    <button type="submit"
+                                        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-bold text-white bg-[#FF3D3D] hover:bg-[#e03535] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF3D3D] focus:ring-offset-gray-900 transition-all duration-150 ease-in-out transform hover:scale-[1.02]">
+                                        Get Free Quote</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content: FAQ (Reduced width and content) -->
+                <div class="lg:w-1/4 scroll-animate mt-20 mb-20">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-lg p-5 h-full">
+                        <h3 class="text-xl font-bold mb-5 text-[#FFD54F] flex items-center">
+                            <i class="fas fa-question-circle mr-2"></i>Common Questions
+                        </h3>
+                        <div class="space-y-5">
+                            <div>
+                                <h4 class="font-bold text-base mb-1 text-white">How much does it cost?</h4>
+                                <p class="text-white/80 text-xs">Prices vary by distance. Get an instant quote above.
+                                    Average: $800-$1,500 coast-to-coast.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-base mb-1 text-white">How long does it take?</h4>
+                                <p class="text-white/80 text-xs">1-2 weeks for cross-country. Local moves are faster.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-base mb-1 text-white">What payment methods?</h4>
+                                <p class="text-white/80 text-xs">Credit cards for deposit. Final payment: cash,
+                                    certified check, or card upon delivery.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-base mb-1 text-white">Is my vehicle insured?</h4>
+                                <p class="text-white/80 text-xs">Yes! All carriers have $250,000+ cargo insurance.</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-5 border-t border-white/20">
+                            <h4 class="font-bold text-base mb-3 text-white flex items-center">
+                                <i class="fas fa-headset mr-2"></i>Need Help?
+                            </h4>
+                            <div class="space-y-2">
+                                <a href="tel:+12096440006"
+                                    class="flex items-center text-white hover:text-[#FFD54F] transition-colors">
+                                    <i class="fas fa-phone text-sm mr-2"></i>
+                                    <span class="text-sm">(209) 644-0006</span>
+                                </a>
+                                <a href="mailto:info@americanask4logistics.us"
+                                    class="flex items-center text-white hover:text-[#FFD54F] transition-colors">
+                                    <i class="fas fa-envelope text-sm mr-2"></i>
+                                    <span class="text-sm">Email Us</span>
+                                </a>
+                                <p class="text-xs text-white/70 mt-3">24/7 customer support available</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="working-section" class="text-[#212121] body-font relative bg-[#dfe1e3]">
+        <!-- Simple Beige Background -->
+        <div class="absolute inset-0 bg-[#F8F9FA] pointer-events-none"></div>
+
+        <!-- Subtle Texture -->
+        <div class="absolute inset-0 opacity-10 pointer-events-none"
+            style="background-image: url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%231A237E%22 fill-opacity=%220.4%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E'); background-size: 40px 40px;">
+        </div>
+
+        <div class="container px-5 py-12 md:py-16 mx-auto relative z-10">
+            <div class="text-center mb-12 md:mb-16">
+                <!-- Simple Heading with Action Red -->
+                <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-[#212121]">
+                    Simple 4-Step Vehicle Transport Process
+                </h2>
+                <p class="text-[#212121] text-lg max-w-2xl mx-auto">
+                    From quote to delivery - transparent, efficient, and stress-free auto shipping
+                </p>
+
+                <!-- Simple Decorative Line -->
+                <div class="w-24 h-1 bg-[#FF3D3D] mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                <!-- Left Column - Process Steps -->
+                <div class="lg:w-1/2 w-full">
+                    <div class="space-y-8">
+                        <!-- Step 1 - Quote -->
+                        <div class="scroll-animate process-step" data-step="1">
+                            <div
+                                class="flex items-start group bg-white p-6 rounded-xl shadow-lg border-l-4 border-[#FF3D3D] hover:shadow-xl transition-all duration-300">
+                                <div class="flex-shrink-0 mr-4 md:mr-6">
+                                    <div
+                                        class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#FF3D3D] flex items-center justify-center text-white shadow-lg">
+                                        <span class="font-bold text-xl md:text-2xl">1</span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow">
+                                    <h3 class="font-bold text-xl md:text-2xl text-[#212121] mb-2 flex items-center">
+                                        Get
+                                        <span
+                                            class="ml-3 px-3 py-1 bg-[#FF3D3D] text-white text-sm font-bold rounded-full">Instant
+                                            Quote</span>
+                                    </h3>
+                                    <p class="text-[#212121] text-base md:text-lg leading-relaxed">
+                                        Get your free, no-obligation quote in minutes with our advanced pricing engine.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Step 2 - Booking -->
+                        <div class="scroll-animate process-step" data-step="2">
+                            <div
+                                class="flex items-start group bg-white p-6 rounded-xl shadow-lg border-l-4 border-[#1A237E] hover:shadow-xl transition-all duration-300">
+                                <div class="flex-shrink-0 mr-4 md:mr-6">
+                                    <div
+                                        class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#1A237E] flex items-center justify-center text-white shadow-lg">
+                                        <span class="font-bold text-xl md:text-2xl">2</span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow">
+                                    <h3 class="font-bold text-xl md:text-2xl text-[#212121] mb-2">
+                                        Book & Schedule
+                                    </h3>
+                                    <p class="text-[#212121] text-base md:text-lg leading-relaxed">
+                                        Choose transport type and confirm with a small deposit. We match your vehicle
+                                        with vetted, insured carriers for optimal routing.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="scroll-animate process-step" data-step="3">
+                            <div
+                                class="flex items-start group bg-white p-6 rounded-xl shadow-lg border-l-4 border-[#FF3D3D] hover:shadow-xl transition-all duration-300">
+                                <div class="flex-shrink-0 mr-4 md:mr-6">
+                                    <div
+                                        class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#FF3D3D] flex items-center justify-center text-white shadow-lg">
+                                        <span class="font-bold text-xl md:text-2xl">3</span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow">
+                                    <h3 class="font-bold text-xl md:text-2xl text-[#212121] mb-2">
+                                        Real-Time Tracking
+                                    </h3>
+                                    <p class="text-[#212121] text-base md:text-lg leading-relaxed">
+                                        Monitor your vehicle's journey 24/7 with our advanced GPS tracking system.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 - Delivery -->
+                        <div class="scroll-animate process-step" data-step="4">
+                            <div
+                                class="flex items-start group bg-white p-6 rounded-xl shadow-lg border-l-4 border-[#1A237E] hover:shadow-xl transition-all duration-300">
+                                <div class="flex-shrink-0 mr-4 md:mr-6">
+                                    <div
+                                        class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#1A237E] flex items-center justify-center text-white shadow-lg">
+                                        <span class="font-bold text-xl md:text-2xl">4</span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow">
+                                    <h3 class="font-bold text-xl md:text-2xl text-[#212121] mb-2">
+                                        Delivery & Payment
+                                    </h3>
+                                    <p class="text-[#212121] text-base md:text-lg leading-relaxed">
+                                        Receive your car, inspect, sign, and finalize payment. Your vehicle arrives
+                                        safely as promised.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Image -->
+                <div class="lg:w-1/2 w-full mt-8 lg:mt-0">
+                    <div class="relative rounded-xl overflow-hidden shadow-xl">
+                        <img class="object-cover object-center w-full h-64 md:h-80 lg:h-96" src="/src/assets/new.Webp"
+                            alt="Professional vehicle transport process" loading="lazy">
+
+                        <!-- Simple Overlay -->
+                        <div
+                            class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900/90 to-transparent p-4 md:p-6">
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <div class="text-center">
+                                    <div class="text-2xl md:text-3xl font-bold text-white">100%</div>
+                                    <div class="text-sm md:text-base text-white/90">On-Time Delivery</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl md:text-3xl font-bold text-white">850+</div>
+                                    <div class="text-sm md:text-base text-white/90">Satisfied Customers</div>
+                                </div>
+                                <div class="text-center md:col-span-1 col-span-2">
+                                    <div class="text-2xl md:text-3xl font-bold text-white">50+</div>
+                                    <div class="text-sm md:text-base text-white/90">States Covered</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simple CTA Button -->
+            <div class="text-center mt-12 md:mt-16">
+                <a href="#order-section"
+                    class="inline-flex items-center px-10 py-4 text-lg md:text-xl font-bold text-white bg-[#FF3D3D] rounded-xl shadow-lg hover:bg-[#e03535] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    Start Your Shipping Process
+                </a>
+
+                <!-- Simple Badge -->
+                <div class="mt-6">
+                    <span class="text-sm text-[#212121] font-medium">Proudly Serving Nationwide</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="services-section" class="bg-[#F8F9FA] text-[#212121] body-font">
+        <div class=" container px-5 py-16 md:py-20 mx-auto">
+            <!-- Services Title Section with Unique Design -->
+            <div class="text-center w-full mb-16 md:mb-20 relative">
+                <!-- Decorative Background Element -->
+                <div
+                    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-[#FF3D3D]/10 to-transparent rounded-full blur-3xl opacity-50">
+                </div>
+
+                <!-- Badge Element -->
+                <div class=" inline-flex items-center px-4 py-2 mb-6 bg-white  rounded-full border border-gray-300">
+                    <span class="text-md font-bold text-[#212121] uppercase tracking-wider">Comprehensive Auto Transport
+                        Services</span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 relative z-10">
+                    <span class=" text-[#212121] text-lg max-w-2xl mx-auto">
+                        Specialized solutions for every vehicle type across the continental United States </span>
+                </h1>
+
+                <!-- Subtitle with Icon -->
+                <div class=" max-w-2xl mx-auto">
+                    <p class="text-lg md:text-xl text-[#1A237E] mb-6 relative z-10">
+                        Whatever your vehicle shipping needs, we provide tailored solutions that prioritize safety,
+                        efficiency, and peace of mind.
+                    </p>
+
+                    <!-- Decorative Arrow -->
+                    <div class="flex justify-center mt-8">
+                        <svg class="w-8 h-8 text-[#1A237E] animate-bounce" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Cards Container with White Background -->
+            <div class="relative bg-white rounded-3xl shadow-2xl overflow-hidden p-8 md:p-10">
+                <!-- Pattern Overlay on White Background -->
+                <div class="absolute inset-0 opacity-[0.02]">
+                    <div class="absolute inset-0"
+                        style="background-image: url('data:image/svg+xml,%3Csvg width=%2280%22 height=%2280%22 viewBox=%220 0 80 80%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%231A237E%22 fill-opacity=%220.4%22%3E%3Cpath d=%22M50 50c0-5.523-4.477-10-10-10s-10 4.477-10 10 4.477 10 10 10 10-4.477 10-10zm-10 8c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E'); background-size: 40px 40px;">
+                    </div>
+                </div>
+
+                <div class="relative z-10">
+                    <!-- Services Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Service 1: Open Transport -->
+                        <div
+                            class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-[#FF3D3D]"></div>
+                            <!-- Image Container -->
+                            <div class="h-48 w-full overflow-hidden bg-gray-100">
+                                <img src="/src/assets/ing.Webp" alt="Open auto transport trailer with multiple vehicles"
+                                    class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-6">
+                                <!-- Service Icon -->
+                                <h3 class="text-xl font-bold text-[#212121] mb-3">Open Auto Transport</h3>
+                                <p class="text-[#212121] mb-4">
+                                    Cost-effective shipping for standard vehicles with nationwide coverage.
+                                </p>
+
+                                <a href="#order-section"
+                                    class="inline-flex items-center text-[#1A237E] font-bold hover:text-[#FF3D3D] transition-colors duration-300 text-sm">
+                                    Get Quote &RightArrow;
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Service 2: Enclosed Transport -->
+                        <div
+                            class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-[#1A237E]"></div>
+                            <!-- Image Container -->
+                            <div class="h-48 w-full overflow-hidden bg-gray-100">
+                                <img src="/src/assets/Tunnel.Webp" alt="Enclosed luxury car transport trailer"
+                                    class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-[#212121] mb-3">Enclosed Transport</h3>
+                                <p class="text-[#212121] mb-4">
+                                    Ideal for luxury and classic vehicles. Fully enclosed carriers protect from weather
+                                    and road debris.
+                                </p>
+
+                                <a href="#order-section"
+                                    class="inline-flex items-center text-[#1A237E] font-bold hover:text-[#FF3D3D] transition-colors duration-300 text-sm">
+                                    Get Quote &RightArrow;
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Service 3: Dealer Services -->
+                        <div
+                            class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-[#FF3D3D]"></div>
+                            <!-- Image Container -->
+                            <div class="h-48 w-full overflow-hidden bg-gray-100">
+                                <img src="src/assets/reseller.Webp"
+                                    alt="Car dealership with multiple vehicles ready for transport"
+                                    class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-[#212121] mb-3">Dealer & Fleet Services</h3>
+                                <p class="text-[#212121] mb-4">
+                                    Specialized logistics for dealerships, auctions, and fleets with volume discounts
+                                    available.
+                                </p>
+
+                                <a href="#order-section"
+                                    class="inline-flex items-center text-[#1A237E] font-bold hover:text-[#FF3D3D] transition-colors duration-300 text-sm">
+                                    Get Quote &RightArrow;
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Service 4: Motorcycle Transport -->
+                        <div
+                            class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-[#1A237E]"></div>
+                            <!-- Image Container -->
+                            <div class="h-48 w-full overflow-hidden bg-gray-100">
+                                <img src="/src/assets/img.Webp" alt="Motorcycle being loaded onto transport trailer"
+                                    class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-[#212121] mb-3">Motorcycle Transport</h3>
+                                <p class="text-[#212121] mb-4">
+                                    Specialized handling for motorcycles and powersports vehicles with secure tie-down
+                                    systems.
+                                </p>
+
+                                <a href="#order-section"
+                                    class="inline-flex items-center text-[#1A237E] font-bold hover:text-[#FF3D3D] transition-colors duration-300 text-sm">
+                                    Get Quote &RightArrow;
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Service 5: RV & Boat Transport -->
+                        <div
+                            class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-[#FF3D3D]"></div>
+                            <!-- Image Container -->
+                            <div class="h-48 w-full overflow-hidden bg-gray-100">
+                                <img src="/src/assets/imgB.Webp" alt="RV and boat transport on trailer"
+                                    class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-[#212121] mb-3">RV & Boat Transport</h3>
+                                <p class="text-[#212121] mb-4">
+                                    Transport for RVs, campers, boats, and oversized vehicles with permit handling
+                                    included.
+                                </p>
+
+                                <a href="#order-section"
+                                    class="inline-flex items-center text-[#1A237E] font-bold hover:text-[#FF3D3D] transition-colors duration-300 text-sm">
+                                    Get Quote &RightArrow;
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Service 6: International Shipping -->
+                        <div
+                            class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-[#1A237E]"></div>
+                            <!-- Image Container -->
+                            <div class="h-48 w-full overflow-hidden bg-gray-100">
+                                <img src="/src/assets/imgRV.Webp" alt="Trailer shipping across America"
+                                    class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-[#212121] mb-3">Trailer Shipping</h3>
+                                <p class="text-[#212121] mb-4">
+                                    Domestic nationwide trailer transport across America, delivering reliable and
+                                    compliant logistics from coast to coast.
+                                </p>
+
+                                <a href="#order-section"
+                                    class="inline-flex items-center text-[#1A237E] font-bold hover:text-[#FF3D3D] transition-colors duration-300 text-sm">
+                                    Get Quote &RightArrow;
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section CTA -->
+                    <div class="text-center mt-12 pt-8 border-t border-gray-100">
+                        <p class="text-lg text-[#212121] mb-6">Ready to ship your vehicle?</p>
+                        <a href="#order-section"
+                            class="inline-flex items-center px-8 py-4 text-lg font-bold text-white bg-[#FF3D3D] rounded-xl shadow-lg hover:bg-[#e03535] hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                </path>
+                            </svg>
+                            Get Your Free Quote Today
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="w-full py-8 px-5 bg-[#1A237E] relative overflow-hidden">
+            <!-- Optional subtle pattern overlay -->
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute inset-0"
+                    style="background-image: url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.4%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E'); background-size: 40px 40px;">
+                </div>
+            </div>
+
+            <div class="container mx-auto text-center relative z-10">
+                <!-- Main heading WITHOUT gradient text -->
+                <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-white">
+                    Streamlined Vehicle Shipping for a Smooth Ride
+                </h1>
+
+                <!-- Subtitle with better styling -->
+                <p class="mt-4 text-base md:text-lg lg:text-xl text-white font-light max-w-3xl mx-auto">
+                    Your car shipping journey, <span class="font-bold text-[#FF3D3D]">simplified</span>.
+                </p>
+
+                <!-- Decorative element (lines) -->
+                <div class="mt-6 flex justify-center items-center space-x-4">
+                    <div class="h-1 w-16 bg-[#FF3D3D] rounded-full"></div>
+                    <div class="h-1 w-16 bg-white rounded-full"></div>
+                    <div class="h-1 w-16 bg-[#FF3D3D] rounded-full"></div>
+                </div>
+
+                <div class="mt-6">
+                    <!-- Enhanced consent section with better styling -->
+                    <div class="container mx-auto text-center">
+                        <div class="flex items-center justify-center mb-2">
+                            <svg class="w-5 h-5 text-[#FF3D3D] mr-2 " fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-white font-medium text-sm">Privacy & Consent Notice</span>
+                        </div>
+                        <p class="text-white/80 text-xs leading-relaxed max-w-3xl mx-auto">
+                            By providing a telephone number and submitting the form, you are consenting to be contacted
+                            by SMS
+                            text message and agreeing to our Privacy Policy. Message frequency may vary. Message and
+                            data rates may
+                            apply. Reply STOP to opt out of further messaging. Reply HELP for more information.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="Auto-section" class="text-[#212121] body-font">
+        <div class="w-full py-12 md:py-16 bg-[#1A237E] relative overflow-hidden">
+            <!-- Subtle pattern overlay -->
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute inset-0"
+                    style="background-image: url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.4%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E'); background-size: 40px 40px;">
+                </div>
+            </div>
+
+            <div class="container px-5 mx-auto relative z-10">
+                <!-- Stats Section -->
+                <div class="flex flex-wrap -m-4 text-center">
+                    <div class="scroll-animate p-4 sm:w-1/3 w-1/2">
+                        <h2 id="customersCount" class="title-font font-medium sm:text-5xl text-4xl text-white mb-2">0+
+                        </h2>
+                        <p class="leading-relaxed text-white/90 font-medium">Satisfied Customers</p>
+                    </div>
+                    <div class="scroll-animate p-4 sm:w-1/3 w-1/2">
+                        <h2 id="statesCount" class="title-font font-medium sm:text-5xl text-4xl text-white mb-2">0+</h2>
+                        <p class="leading-relaxed text-white/90 font-medium">States Covered</p>
+                    </div>
+                    <div class="scroll-animate p-4 sm:w-1/3 w-full sm:mt-0 mt-4">
+                        <h2 id="supportCount" class="title-font font-medium sm:text-5xl text-4xl text-white mb-2">0/7
+                        </h2>
+                        <p class="leading-relaxed text-white/90 font-medium">Support</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    <section id="reviews-section" class="py-20 bg-[#dfe1e3]">
+        <div class="container mx-auto px-4">
+            <!-- Header Section -->
+            <div class="text-center mb-16">
+                <span
+                    class="scroll-animate inline-block px-4 py-1 bg-[#1A237E]/10 text-[#1A237E] rounded-full text-sm font-semibold mb-4">
+                    TESTIMONIALS
+                </span>
+                <h1 class="text-4xl md:text-5xl font-bold text-[#212121] mb-6">
+                    Trusted by <span class="text-[#FF3D3D]">Americans</span>
+                </h1>
+                <p class="text-lg text-[#212121] max-w-2xl mx-auto">
+                    See why thousands choose our premium auto transport services for their vehicle shipping needs.
+                </p>
+            </div>
+
+            <!-- Single Row Marquee Container -->
+            <div class="w-full overflow-hidden py-4">
+                <div class="marquee">
+                    <div class="marquee-content">
+                        <!-- Review Card 1 -->
+                        <div
+                            class="inline-block w-96 mx-4 bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                            <div class="flex items-center mb-6">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-[#1A237E] flex items-center justify-center text-white text-xl font-bold mr-4">
+                                    SJ
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-[#212121] text-lg">Sarah Johnson</h3>
+                                    <p class="text-[#1A237E] text-sm font-medium">Small Business Owner</p>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="flex text-[#FFD54F] mb-3">
+                                    ★★★★★
+                                </div>
+                                <p class="text-[#212121] leading-relaxed">
+                                    "The service was incredible from start to finish! Highly responsive and delivered
+                                    exactly
+                                    what was promised."
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-gray-100">
+                                <span class="text-gray-500 text-sm ml-3">2 days ago</span>
+                            </div>
+                        </div>
+
+                        <!-- Review Card 2 -->
+                        <div
+                            class="inline-block w-96 mx-4 bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                            <div class="flex items-center mb-6">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-[#FF3D3D] flex items-center justify-center text-white text-xl font-bold mr-4">
+                                    DM
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-[#212121] text-lg">David Miller</h3>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="flex text-[#FFD54F] mb-3">
+                                    ★★★★★
+                                </div>
+                                <p class="text-[#212121] leading-relaxed">
+                                    "Relocated 3 cars for our family move. Professional, on-time, and great
+                                    communication
+                                    throughout."
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-gray-100">
+                                <span class="text-gray-500 text-sm ml-3">2 weeks ago</span>
+                            </div>
+                        </div>
+
+                        <!-- Review Card 3 -->
+                        <div
+                            class="inline-block w-96 mx-4 bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                            <div class="flex items-center mb-6">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-[#1A237E] flex items-center justify-center text-white text-xl font-bold mr-4">
+                                    ER
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-[#212121] text-lg">Emily Rodriguez</h3>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="flex text-[#FFD54F] mb-3">
+                                    ★★★★★
+                                </div>
+                                <p class="text-[#212121] leading-relaxed">
+                                    "Shipped my classic Corvette from Florida to California. Enclosed transport was
+                                    perfect -
+                                    not a scratch!"
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-gray-100">
+                                <span class="text-gray-500 text-sm ml-3">3 days ago</span>
+                            </div>
+                        </div>
+
+                        <!-- Review Card 4 -->
+                        <div
+                            class="inline-block w-96 mx-4 bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                            <div class="flex items-center mb-6">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-[#1A237E] flex items-center justify-center text-white text-xl font-bold mr-4">
+                                    TR
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-[#212121] text-lg">Thomas Reed</h3>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="flex text-[#FFD54F] mb-3">
+                                    ★★★★★
+                                </div>
+                                <p class="text-[#212121] leading-relaxed">
+                                    "Professional and reliable service. Their team always goes the extra mile for us."
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-gray-100">
+                                <span class="text-gray-500 text-sm ml-3">3 days ago</span>
+                            </div>
+                        </div>
+
+                        <!-- Review Card 5 -->
+                        <div
+                            class="inline-block w-96 mx-4 bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                            <div class="flex items-center mb-6">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-[#1A237E] flex items-center justify-center text-white text-xl font-bold mr-4">
+                                    LC
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-[#212121] text-lg">Lisa Carter</h3>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="flex text-[#FFD54F] mb-3">
+                                    ★★★★★
+                                </div>
+                                <p class="text-[#212121] leading-relaxed">
+                                    "Our dealership ships 20+ cars monthly with them. Consistent reliability and
+                                    competitive
+                                    pricing."
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-gray-100">
+                                <span class="text-gray-500 text-sm ml-3">2 weeks ago</span>
+                            </div>
+                        </div>
+
+                        <!-- Review Card 6 -->
+                        <div
+                            class="inline-block w-96 mx-4 bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                            <div class="flex items-center mb-6">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-[#FF3D3D] flex items-center justify-center text-white text-xl font-bold mr-4">
+                                    JP
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-[#212121] text-lg">James Peterson</h3>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="flex text-[#FFD54F] mb-3">
+                                    ★★★★★
+                                </div>
+                                <p class="text-[#212121] leading-relaxed">
+                                    "Outstanding logistics partner! Significantly improved our supply chain operations."
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-gray-100">
+                                <span class="text-gray-500 text-sm ml-3">1 month ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="text-center mt-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-[#212121] mb-6">
+                    Ready to experience premium logistics service?
+                </h2>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#order-section"
+                        class="px-8 py-4 bg-[#1A237E] text-white font-semibold rounded-xl hover:bg-[#151d5c] hover:shadow-xl transition-all duration-300">
+                        Get Free Quote
+                    </a>
+                    <a href="tel:1234567890"
+                        class="px-8 py-4 bg-white text-[#1A237E] font-semibold rounded-xl border-2 border-[#1A237E] hover:bg-[#FF3D3D] hover:text-white hover:border-[#FF3D3D] transition-all duration-300">
+                        Contact Sales
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <footer class="bg-[#1A237E] text-white">
+        <div class="container mx-auto py-16 px-6 lg:px-8">
+            <!-- Top Section with Images -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12">
+                <!-- USA Map Image Section -->
+                <div class=" bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                    <h3 class="text-xl font-bold mb-4 text-center text-white">Nationwide Coverage</h3>
+                    <div class="flex justify-center items-center h-48 bg-white/5 rounded-lg p-4">
+                        <!-- USA Map Placeholder - Replace with actual map image -->
+                        <div class="text-center">
+                            <img class="max-w-full max-h-full " src="/src/assets/MAP.Webp" alt="US Map">
+                            <p class="text-white/60 text-xs mt-2">Nationwide Logistics Coverage</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-1 sm:p-2 flex items-center justify-center h-full w-full max-w-full max-h-full">
+                    <h1 class="font-semibold text-2xl tracking-wide text-center w-full text-white">
+                        Where <span class="font-bold text-[#FF3D3D]">1,000+</span>customers put their trust—nationwide.
+                        Trusted by industry leaders for reliable vehicle shipping across the USA.
+                    </h1>
+                </div>
+                <div
+                    class="bg-white/10 p-1 sm:p-2 flex items-center justify-center h-full w-full max-w-full max-h-full rounded-xl border border-white/20">
+                    <marquee behavior="scroll" direction="left" loop
+                        class="font-semibold text-lg tracking-wide w-full text-white">
+                        • SPECIAL OFFER: Free Shipping on All Orders &nbsp; • LIMITED TIME DISCOUNT &nbsp; • PREMIUM
+                        QUALITY
+                        PRODUCTS &nbsp;•
+                        24/7 CUSTOMER SUPPORT &nbsp; • 100% SATISFACTION GUARANTEED &nbsp; • FAST DELIVERY &nbsp; •
+                        EXCLUSIVE DEALS
+                    </marquee>
+                </div>
+            </div>
+
+            <!-- Rest of the footer remains the same -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info Section -->
+                <div class="scroll-animate space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <div>
+                            <img src="/src/assets/logo.png" alt="logo" class="h-[150px] w-auto " />
+                        </div>
+                    </div>
+                    <div class="text-xl font-bold tracking-wider text-[#FF3D3D] text-justify">AmericanASK4Logistics
+                    </div>
+                    <p class="text-white/80 text-sm">
+                        Connecting the nation, one mile at a time. We prioritize reliability, transparency, and trust in
+                        every shipment.
+                    </p>
+                    <div class="scroll-animate pt-4">
+                        <p class="text-white/90 font-semibold text-sm mb-2">Trusted by Industry Leaders</p>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 rounded-full bg-[#FF3D3D]"></div>
+                            <div class="w-3 h-3 rounded-full bg-white"></div>
+                            <div class="w-3 h-3 rounded-full bg-[#FF3D3D]"></div>
+                            <span class="text-white/70 text-xs ml-2">&star; 4.9/5 Rating</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Quick Links Section -->
+                <div>
+                    <h3 class="scroll-animate text-lg font-semibold text-white mb-4 border-b border-[#FF3D3D] pb-2">
+                        Quick Links</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#home-section"
+                                class="scroll-animate text-white/70 hover:text-white hover:pl-2 transition-all duration-300 flex items-center">
+                                <span class="w-1 h-1 bg-[#FF3D3D] rounded-full mr-2"></span>
+                                Home
+                            </a></li>
+                        <li><a href="#order-section"
+                                class="scroll-animate text-white/70 hover:text-white hover:pl-2 transition-all duration-300 flex items-center">
+                                <span class="w-1 h-1 bg-[#FF3D3D] rounded-full mr-2"></span>
+                                Process
+                            </a></li>
+                        <li><a href="#services-section"
+                                class="scroll-animate  text-white/70 hover:text-white hover:pl-2 transition-all duration-300 flex items-center">
+                                <span class="w-1 h-1 bg-[#FF3D3D] rounded-full mr-2"></span>
+                                Services
+                            </a></li>
+                        <li><a href="#reviews-section"
+                                class="scroll-animate text-white/70 hover:text-white hover:pl-2 transition-all duration-300 flex items-center">
+                                <span class="w-1 h-1 bg-[#FF3D3D] rounded-full mr-2"></span>
+                                Reviews
+                            </a></li>
+                        <li><a href="/Privacy.html"
+                                class="scroll-animate   text-white/70 hover:text-white hover:pl-2 transition-all duration-300 flex items-center">
+                                <span class="w-1 h-1 bg-[#FF3D3D] rounded-full mr-2"></span>
+                                Privacy Policy
+                            </a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Section -->
+                <div>
+                    <h3 class="scroll-animate text-lg font-semibold text-white mb-4 border-b border-[#FF3D3D] pb-2">
+                        Contact Us</h3>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex items-start space-x-3">
+                            <div
+                                class="scroll-animate w-6 h-6 rounded-full bg-[#FF3D3D]/20 flex items-center justify-center shrink-0">
+                                <i class="fas fa-building w-4 h-4 text-[#FF3D3D]"></i> <!-- Building -->
+
+                            </div>
+                            <div class="scroll-animate">
+                                <p class="text-white/90 font-medium">California Office</p>
+                                <p class="text-white/70">2840 Palos Verdes Drive N<br>Rolling Hills, CA 90274</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div
+                                class="scroll-animate w-6 h-6 rounded-full bg-[#FF3D3D]/20 flex items-center justify-center shrink-0">
+                                <i class="fas fa-building w-4 h-4 text-[#FF3D3D]"></i> <!-- Building -->
+
+                            </div>
+                            <div>
+                                <p class="scroll-animate text-white/90 font-medium">Florida Office</p>
+                                <p class="scroll-animate text-white/70">301 Parsons Wood DR<br>Seffner, FL 33584</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div
+                                class="scroll-animate w-6 h-6 rounded-full bg-[#FF3D3D]/20 flex items-center justify-center">
+                                <svg class="w-4 h-4 text-[#FF3D3D]" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                </svg>
+                            </div>
+                            <a href="tel:+12096440006"
+                                class="scroll-animate text-white/70 hover:text-white transition-colors">+1
+                                209-644-0006</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div
+                                class="scroll-animate w-6 h-6 rounded-full bg-[#FF3D3D]/20 flex items-center justify-center">
+                                <svg class="w-4 h-4 text-[#FF3D3D]" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                </svg>
+                            </div>
+                            <a href="mailto:INFO@AmericanASK4Logistics"
+                                class="scroll-animate text-white/70 hover:text-white transition-colors">INFO@AmericanASK4Logistics</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social & Newsletter Section -->
+                <div>
+                    <h3 class="scroll-animate text-lg font-semibold text-white mb-4 border-b border-[#FF3D3D] pb-2">Stay
+                        Connected</h3>
+                    <p class="scroll-animate text-white/70 text-sm mb-6">Follow us for updates and logistics insights
+                    </p>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="#" title="none"
+                            class="scroll-animate w-10 h-10 rounded-full bg-white/10 hover:bg-[#FF3D3D] flex items-center justify-center transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+
+                        </a>
+                        <a href="#" title="none"
+                            class="scroll-animate w-10 h-10 rounded-full bg-white/10 hover:bg-[#FF3D3D] flex items-center justify-center transition-colors">
+                            <i class="fab fa-twitter"></i>
+
+                        </a>
+                        <a href="#" title="none"
+                            class="scroll-animate w-10 h-10 rounded-full bg-white/10 hover:bg-[#FF3D3D] flex items-center justify-center transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+
+                        </a>
+                        <a href="#" title="none"
+                            class="scroll-animate w-10 h-10 rounded-full bg-white/10 hover:bg-[#FF3D3D] flex items-center justify-center transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <div class="scroll-animate">
+                        <!-- <h3 class="text-xl font-bold mb-4 text-center text-white">Certifications</h3> -->
+                        <div class="flex flex-col md:flex-row items-center justify-center gap-6 h-48">
+                            <!-- FMCA Logo (Smaller) -->
+                            <div class="shrink-0">
+                                <div class="w-24 h-24  rounded-lg flex items-center justify-center  p-4">
+                                    <img src="/src/assets/FMSCA.Webp" alt="FMCSA Logo" class="max-w-40 max-h-20" />
+                                </div>
+                                <p class="text-white/70 text-xs text-center m-3">Certified Carrier</p>
+                            </div>
+
+                            <!-- Certification Info -->
+                            <div class="text-center md:text-left">
+                                <div class="space-y-4">
+                                    <div>
+                                        <div class="  text-sm mb-1">MC# 1555796</div>
+                                        <p class="text-white/70 text-sm">Motor Carrier Number</p>
+                                    </div>
+                                    <div>
+                                        <div class="  text-sm mb-1">DOT# 4086494</div>
+                                        <p class="text-white/70 text-sm">Department of Transportation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright & Legal Bottom Bar -->
+            <div class="mt-16 pt-8 border-t border-white/20 flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-white/70 text-sm">
+                        &copy; Copyright American ASK4 Logistics 2025. All rights reserved.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center md:items-end">
+                    <!-- <p class="text-white/70 text-sm">DEVELOPED BY Taha Ali B.</p> -->
+                    <div class="flex items-center space-x-4 mt-2">
+                        <a href="/Privacy.html" title="none"> <span class="text-white/60 text-xs">Privacy
+                                Policy &AMP; Terms of service</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -687,20 +687,20 @@
                                     <div>
                                         <label for="name" class="block text-xs font-bold text-white mb-1">Name *</label>
                                         <input type="text" id="name" name="name" placeholder="Enter your full name"
-                                            required
+                                            required autocomplete="name"
                                             class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E] focus:border-[#1A237E] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
                                     </div>
                                     <div>
                                         <label for="email" class="block text-xs font-bold text-white mb-1">Email
                                             *</label>
                                         <input type="email" id="email" name="email"
-                                            placeholder="Enter your email address" required
+                                            placeholder="Enter your email address" required autocomplete="email"
                                             class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E] focus:border-[#1A237E] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
                                     </div>
                                     <div>
                                         <label for="phone" class="block text-xs font-bold text-white mb-1">Phone Number
                                             *</label>
-                                        <input type="tel" id="phone" name="phone" placeholder="(XXX) XXX-XXXX" required
+                                        <input type="tel" id="phone" name="phone" placeholder="(XXX) XXX-XXXX" required autocomplete="tel"
                                             class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E] focus:border-[#1A237E] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
                                     </div>
                                 </div>
@@ -770,7 +770,7 @@
                                     </div>
 
                                     <div class="md:col-span-2">
-                                        <label class="block text-xs font-bold text-white mb-2">Transport type</label>
+                                        <label class="block text-xs font-bold text-white mb-2" for="transport_open">Transport type</label>
                                         <div class="flex items-center space-x-6">
                                             <div class="flex items-center">
                                                 <input id="transport_open" name="transport_type" type="radio"

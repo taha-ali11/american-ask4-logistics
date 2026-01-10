@@ -582,12 +582,36 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
             </div>
         </div>
     </section>
-    <section class="bg-[#0B2C7A] text-white p-4 sm:p-8 flex items-center justify-center min-h-screen">
+    <section class="bg-[#0B2C7A] text-white p-4 sm:p-8">
         <div class="w-full max-w-6xl mx-auto">
-            <div class="flex flex-col lg:flex-row gap-8 lg:gap-8">
-                <!-- Left Content: Benefits/Info (Reduced width) -->
-                <div class="lg:w-1/4 scroll-animate mt-20 mb-20">
-                    <div class="bg-white/10 backdrop-blur-sm rounded-lg p-5 h-full">
+
+            <!-- Trust Banner -->
+            <div class="text-center mb-8">
+                <h1 class="text-2xl md:text-3xl font-bold mb-4">Premium Vehicle Shipping Across All 50 States</h1>
+                <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-shield-alt text-[#FFD54F]"></i>
+                        <span class="text-sm">FMCSA Licensed</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="far fa-check-circle text-[#FFD54F]"></i>
+                        <span class="text-sm">BBB Accredited</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-lock text-[#FFD54F]"></i>
+                        <span class="text-sm">Secure Payment</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="far fa-star text-[#FFD54F]"></i>
+                        <span class="text-sm">5-Star Reviews</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Left Sidebar: Why Choose Us -->
+                <div class="lg:w-1/4">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-lg p-5 sticky top-6">
                         <h3 class="text-xl font-bold mb-5 text-[#FFD54F] flex items-center">
                             <i class="fas fa-star mr-2"></i>Why Choose Us
                         </h3>
@@ -647,7 +671,7 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                             </div>
                         </div>
 
-                        <!-- Trust & Safety Section Added Here -->
+                        <!-- Trust & Safety Section -->
                         <div class="mt-6 pt-5 border-t border-white/20">
                             <h4 class="font-bold text-base mb-3 text-white flex items-center">
                                 <i class="fas fa-award mr-2"></i>Trust & Safety
@@ -662,7 +686,6 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                                 <div class="text-center p-2 bg-white/5 rounded-lg">
                                     <div class="text-[#FFD54F] text-base mb-1">
                                         <i class="fas fa-lock"></i>
-
                                     </div>
                                     <div class="text-xs text-white/80">Secure Payment</div>
                                 </div>
@@ -682,182 +705,295 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                         </div>
                     </div>
                 </div>
-                <!-- Center: Form (Increased width) -->
-                <div class="lg:w-1/2">
-                    <div
-                        class="scroll-animate w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg shadow-xl relative z-10">
-                        <div class="max-w-full mx-auto">
-                            <h2 id="order-section" class="text-center text-3xl md:text-4xl font-bold mb-4 text-white">
-                                Get <span class="text-[#FFD54F]">Free</span> Auto Transport Quote
-                            </h2>
-                            <p class="text-center text-white/90 mb-6 text-sm">
-                                Fast, accurate pricing for all vehicle types. No commitment required.
-                            </p>
 
-                            <form id="shippingForm" onsubmit="return false" class="space-y-4 md:space-y-5">
-                                <!-- First row: Name, Email, Phone -->
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+                <!-- Main Form Area -->
+                <div class="lg:w-2/3">
+                    <div class="scroll-animate w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg shadow-xl relative">
+                        <h2 id="order-section" class="text-center text-3xl md:text-4xl font-bold mb-4 text-white">
+                            Get <span class="text-[#FFD54F]">Free</span> Auto Transport Quote
+                        </h2>
+                        <p class="text-center text-white/90 mb-8 text-sm">
+                            Fast, accurate pricing for all vehicle types. No commitment required.
+                            <span class="block text-[#FFD54F] font-bold mt-1">Get your quote in under 60 seconds!</span>
+                        </p>
+
+                        <!-- Progress Indicator -->
+                        <div class="mb-8">
+                            <div class="flex justify-between items-center relative">
+                                <div class="flex-1 h-1 bg-white/20 absolute top-3 left-0 right-0 -z-10"></div>
+                                <div class="flex flex-col items-center">
+                                    <div
+                                        class="w-6 h-6 rounded-full bg-[#FFD54F] flex items-center justify-center mb-2">
+                                        <span class="text-[#0B2C7A] text-xs font-bold">1</span>
+                                    </div>
+                                    <span class="text-xs font-medium">Contact</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full bg-white/30 flex items-center justify-center mb-2">
+                                        <span class="text-white text-xs font-bold">2</span>
+                                    </div>
+                                    <span class="text-xs font-medium">Vehicle</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full bg-white/30 flex items-center justify-center mb-2">
+                                        <span class="text-white text-xs font-bold">3</span>
+                                    </div>
+                                    <span class="text-xs font-medium">Shipment</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form id="shippingForm" onsubmit="return false" class="space-y-8">
+
+                            <!-- SECTION 1: Contact Information -->
+                            <div class="bg-white/5 p-4 rounded-lg">
+                                <h3 class="text-lg font-bold mb-4 text-[#FFD54F] border-l-4 border-[#FFD54F] pl-3">
+                                    <i class="fas fa-user mr-2"></i>Your Contact Information
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     <div>
-                                        <label for="name" class="block text-xs font-bold text-white mb-1">Name *</label>
-                                        <input type="text" id="name" name="name" placeholder="Enter your full name"
-                                            required autocomplete="name"
+                                        <label for="name" class="block text-xs font-bold text-white mb-1">
+                                            <i class="fas fa-user-circle text-[#FFD54F] mr-1"></i>Full Name *
+                                        </label>
+                                        <input type="text" id="name" name="name" placeholder="John Smith" required
+                                            autocomplete="name"
                                             class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0B2C7A] focus:border-[#0B2C7A] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
                                     </div>
                                     <div>
-                                        <label for="email" class="block text-xs font-bold text-white mb-1">Email
-                                            *</label>
-                                        <input type="email" id="email" name="email"
-                                            placeholder="Enter your email address" required autocomplete="email"
+                                        <label for="email" class="block text-xs font-bold text-white mb-1">
+                                            <i class="fas fa-envelope text-[#FFD54F] mr-1"></i>Email Address *
+                                        </label>
+                                        <input type="email" id="email" name="email" placeholder="john@example.com"
+                                            required autocomplete="email"
                                             class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0B2C7A] focus:border-[#0B2C7A] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
                                     </div>
                                     <div>
-                                        <label for="phone" class="block text-xs font-bold text-white mb-1">Phone Number
-                                            *</label>
-                                        <input type="tel" id="phone" name="phone" placeholder="(XXX) XXX-XXXX" required
+                                        <label for="phone" class="block text-xs font-bold text-white mb-1">
+                                            <i class="fas fa-phone text-[#FFD54F] mr-1"></i>Phone Number *
+                                        </label>
+                                        <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required
                                             autocomplete="tel"
                                             class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0B2C7A] focus:border-[#0B2C7A] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
+                                        <p class="text-xs text-white/70 mt-1">For shipment updates & coordination</p>
                                     </div>
                                 </div>
-                                <!-- Second row: Vehicle Details and Condition -->
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                            </div>
+
+                            <!-- SECTION 2: Vehicle Details -->
+                            <div class="bg-white/5 p-4 rounded-lg">
+                                <h3 class="text-lg font-bold mb-4 text-[#FFD54F] border-l-4 border-[#FFD54F] pl-3">
+                                    <i class="fas fa-car mr-2"></i>Vehicle Details
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label for="car_details" class="block text-xs font-bold text-white mb-1">Vehicle
-                                            Make,
-                                            Model, Year *</label>
+                                        <label for="car_details" class="block text-xs font-bold text-white mb-1">
+                                            <i class="fas fa-car-side text-[#FFD54F] mr-1"></i>Vehicle Make, Model &
+                                            Year *
+                                        </label>
                                         <input type="text" id="car_details" name="car_details"
-                                            placeholder="e.g., 2020 Honda Civic" required
+                                            placeholder="e.g., 2023 Toyota Camry" required
                                             class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0B2C7A] focus:border-[#0B2C7A] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
+                                        <p class="text-xs text-white/70 mt-1">Enter exact details for accurate pricing
+                                        </p>
                                     </div>
                                     <div>
-                                        <label for="car_condition"
-                                            class="block text-xs font-bold text-white mb-1">Vehicle
-                                            Condition *</label>
+                                        <label for="car_condition" class="block text-xs font-bold text-white mb-1">
+                                            <i class="fas fa-cogs text-[#FFD54F] mr-1"></i>Vehicle Condition *
+                                        </label>
                                         <select id="car_condition" name="car_condition" required
                                             class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0B2C7A] focus:border-[#0B2C7A] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm cursor-pointer">
-                                            <option value="" disabled selected class="text-gray-600">Select Condition
-                                            </option>
-                                            <option value="running" class="text-[#212121]">Running</option>
+                                            <option value="" disabled selected class="text-gray-600">Select Vehicle
+                                                Condition</option>
+                                            <option value="running" class="text-[#212121]">Running & Operable</option>
                                             <option value="not_running" class="text-[#212121]">Not Running (Inoperable)
                                             </option>
+                                            <option value="modified" class="text-[#212121]">Modified/Lifted Vehicle
+                                            </option>
                                         </select>
+                                        <p class="text-xs text-white/70 mt-1">Affects carrier selection & pricing</p>
                                     </div>
                                 </div>
 
-                                <!-- Third row: Transport From and To -->
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-                                    <div>
-                                        <label for="from_zip" class="block text-xs font-bold text-white mb-1">Pickup
-                                            Location
-                                            *</label>
-                                        <input type="text" id="from_zip" name="from_zip"
-                                            placeholder="State / Zipcode / Address" required
-                                            class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D91C2A] focus:border-[#D91C2A] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
-                                    </div>
-                                    <div>
-                                        <label for="to_zip" class="block text-xs font-bold text-white mb-1">Delivery
-                                            Location
-                                            *</label>
-                                        <input type="text" id="to_zip" name="to_zip"
-                                            placeholder="State / Zipcode / Address" required
-                                            class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D91C2A] focus:border-[#D91C2A] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
-                                    </div>
+                                <div class="mt-4">
+                                    <label for="vehicle_details" class="block text-xs font-bold text-white mb-1">
+                                        <i class="fas fa-info-circle text-[#FFD54F] mr-1"></i>Additional Vehicle Details
+                                    </label>
+                                    <textarea id="vehicle_details" name="vehicle_details"
+                                        placeholder="Special modifications, aftermarket parts, accessibility issues, height/weight concerns, or any other details our driver should know"
+                                        rows="3" required
+                                        class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0B2C7A] focus:border-[#0B2C7A] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm resize-y"></textarea>
+                                    <p class="text-xs text-white/70 mt-1">Helps us match you with the right carrier</p>
                                 </div>
+                            </div>
 
-                                <!-- Fourth row: Pickup Date and Transport Type -->
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-                                    <div>
-                                        <label for="pickup_date"
-                                            class="block text-xs font-bold text-white mb-1">Preferred
-                                            Pickup
-                                            Date</label>
-                                        <input type="date" id="pickup_date" name="pickup_date"
-                                            class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0B2C7A] focus:border-[#0B2C7A] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
-                                    </div>
-                                    <div>
-                                        <label for="vehicle_details"
-                                            class="block text-xs font-bold text-white mb-1">Vehicle Additional
-                                            Details *</label>
-                                        <textarea id="vehicle_details" name="vehicle_details"
-                                            placeholder="Modifications, and any access restrictions etc." required
-                                            rows="3"
-                                            class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0B2C7A] focus:border-[#0B2C7A] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm resize-y"></textarea>
+                            <!-- SECTION 3: Shipment Details -->
+                            <div class="bg-white/5 p-4 rounded-lg">
+                                <h3 class="text-lg font-bold mb-4 text-[#FFD54F] border-l-4 border-[#FFD54F] pl-3">
+                                    <i class="fas fa-route mr-2"></i>Shipment Details
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label for="from_zip" class="block text-xs font-bold text-white mb-1">
+                                                <i class="fas fa-map-marker-alt text-[#FFD54F] mr-1"></i>Pickup Location
+                                                *
+                                            </label>
+                                            <input type="text" id="from_zip" name="from_zip"
+                                                placeholder="City, State or Zip Code" required
+                                                class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D91C2A] focus:border-[#D91C2A] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
+                                            <p class="text-xs text-white/70 mt-1">Where we'll pick up your vehicle</p>
+                                        </div>
+                                        <div>
+                                            <label for="to_zip" class="block text-xs font-bold text-white mb-1">
+                                                <i class="fas fa-flag-checkered text-[#FFD54F] mr-1"></i>Delivery
+                                                Location *
+                                            </label>
+                                            <input type="text" id="to_zip" name="to_zip"
+                                                placeholder="City, State or Zip Code" required
+                                                class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D91C2A] focus:border-[#D91C2A] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
+                                            <p class="text-xs text-white/70 mt-1">Where you want your vehicle delivered
+                                            </p>
+                                        </div>
                                     </div>
 
-                                    <div class="md:col-span-2">
-                                        <label class="block text-xs font-bold text-white mb-2"
-                                            for="transport_open">Transport type</label>
-                                        <div class="flex items-center space-x-6">
-                                            <div class="flex items-center">
-                                                <input id="transport_open" name="transport_type" type="radio"
-                                                    title="Select" value="Open" checked
-                                                    class="h-4 w-4 text-[#D91C2A] focus:ring-[#0B2C7A] border-gray-400 bg-white/90">
-                                                <span class="ml-2 text-sm font-medium text-white">Open Carrier</span>
+                                    <!-- Transport Type Selection -->
+                                    <div>
+                                        <label class="block text-xs font-bold text-white mb-2">
+                                            <i class="fas fa-truck-moving text-[#FFD54F] mr-1"></i>Transport Type *
+                                        </label>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div class="border border-gray-500 rounded-lg p-4 hover:bg-white/5 transition-colors cursor-pointer"
+                                                onclick="document.getElementById('transport_open').checked = true">
+                                                <div class="flex items-center">
+                                                    <input id="transport_open" name="transport_type" type="radio"
+                                                        value="Open" checked required
+                                                        class="h-5 w-5 text-[#D91C2A] focus:ring-[#0B2C7A] border-gray-400 bg-white/90">
+                                                    <span class="ml-3 text-base font-bold text-white">Open
+                                                        Carrier</span>
+                                                </div>
+                                                <p class="text-xs text-white/70 mt-2 ml-8">Most popular & cost-effective
+                                                    for standard vehicles</p>
+                                                <div class="ml-8 mt-1">
+                                                    <span
+                                                        class="inline-block px-2 py-1 bg-[#0B2C7A] text-white text-xs rounded">SAVES
+                                                        20-40%</span>
+                                                </div>
                                             </div>
-                                            <div class="flex items-center">
-                                                <input id="transport_enclosed" name="transport_type" type="radio"
-                                                    title="Select" value="Enclosed"
-                                                    class="h-4 w-4 text-[#0B2C7A] focus:ring-[#0B2C7A] border-gray-400 bg-white/90">
-                                                <span class="ml-2 text-sm font-medium text-white">Enclosed
-                                                    Carrier</span>
+                                            <div class="border border-gray-500 rounded-lg p-4 hover:bg-white/5 transition-colors cursor-pointer"
+                                                onclick="document.getElementById('transport_enclosed').checked = true">
+                                                <div class="flex items-center">
+                                                    <input id="transport_enclosed" name="transport_type" type="radio"
+                                                        value="Enclosed" required
+                                                        class="h-5 w-5 text-[#0B2C7A] focus:ring-[#0B2C7A] border-gray-400 bg-white/90">
+                                                    <span class="ml-3 text-base font-bold text-white">Enclosed
+                                                        Carrier</span>
+                                                </div>
+                                                <p class="text-xs text-white/70 mt-2 ml-8">Maximum protection for luxury
+                                                    & classic cars</p>
+                                                <div class="ml-8 mt-1">
+                                                    <span
+                                                        class="inline-block px-2 py-1 bg-[#FFD54F] text-[#0B2C7A] text-xs rounded font-bold">PREMIUM</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Pickup Date -->
+                                    <div>
+                                        <label for="pickup_date" class="block text-xs font-bold text-white mb-1">
+                                            <i class="far fa-calendar-alt text-[#FFD54F] mr-1"></i>Preferred Pickup Date
+                                        </label>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div>
+                                                <input type="date" id="pickup_date" name="pickup_date" required
+                                                    class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0B2C7A] focus:border-[#0B2C7A] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm">
+                                                <p class="text-xs text-white/70 mt-1">We'll confirm the exact date</p>
+                                            </div>
+                                            <div>
+                                                <label for="timeline" class="block text-xs font-bold text-white mb-1">
+                                                    <i class="far fa-clock text-[#FFD54F] mr-1"></i>Delivery Timeline
+                                                    Preference *
+                                                </label>
+                                                <select id="timeline" name="timeline" required
+                                                    class="w-full px-3 py-2 bg-white/90 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0B2C7A] focus:border-[#0B2C7A] text-[#212121] placeholder-gray-600 transition duration-150 ease-in-out text-sm cursor-pointer">
+                                                    <option value="" disabled selected class="text-gray-600">Select
+                                                        Timeline
+                                                    </option>
+                                                    <option value="standard" class="text-[#212121]">Standard (1-2 weeks)
+                                                    </option>
+                                                    <option value="expedited" class="text-[#212121]">Expedited (3-7
+                                                        days)</option>
+                                                    <option value="flexible" class="text-[#212121]">Flexible (Save up to
+                                                        20%)</option>
+                                                </select>
+                                                <p class="text-xs text-white/70 mt-1">Choose your preferred delivery
+                                                    speed</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <!-- Checkboxes - full width on all screens -->
+                            <!-- Agreement Section -->
+                            <div class="bg-white/5 p-4 rounded-lg">
+                                <h3 class="text-lg font-bold mb-4 text-[#FFD54F] border-l-4 border-[#FFD54F] pl-3">
+                                    <i class="fas fa-file-signature mr-2"></i>Agreements
+                                </h3>
                                 <div class="space-y-4">
-                                    <div class="flex items-start">
+                                    <div class="flex items-start bg-white/5 p-3 rounded-lg">
                                         <div class="flex items-center h-5">
                                             <input id="sms_consent" name="sms_consent" type="checkbox" required
-                                                class="focus:ring-[#D91C2A]  h-4 w-4 text-[#D91C2A] border-gray-400 rounded bg-white/90">
+                                                class="focus:ring-[#D91C2A] h-4 w-4 text-[#D91C2A] border-gray-400 rounded bg-white/90">
                                         </div>
-                                        <div class="ml-3 text-xs">
-                                            <label for="sms_consent" class="font-medium text-white cursor-pointer">By
-                                                checking
-                                                this
-                                                box, I agree to receive SMS messages about auto transportation from
-                                                American Ask4 Logistics at the
-                                                phone
-                                                number provided. The SMS frequency may vary. Data rates may apply. Text
-                                                HELP to
-                                                (209)
-                                                644-0006 for assistance. Reply STOP to opt out of receiving SMS
-                                                messages.</label>
+                                        <div class="ml-3">
+                                            <label for="sms_consent" class="text-xs text-white cursor-pointer">
+                                                <span class="font-bold">SMS Updates:</span> I agree to receive text
+                                                message updates about my shipment at the phone number provided.
+                                                <span class="block text-white/60 text-xs mt-1">Message frequency varies.
+                                                    Reply STOP to opt out. Data rates may apply.</span>
+                                            </label>
                                         </div>
                                     </div>
 
-                                    <!-- Privacy Policy Checkbox (with link styling) -->
-                                    <div class="flex items-start">
+                                    <div class="flex items-start bg-white/5 p-3 rounded-lg">
                                         <div class="flex items-center h-5">
                                             <input id="privacy_policy" name="privacy_policy" type="checkbox" required
                                                 class="focus:ring-[#D91C2A] h-4 w-4 text-[#D91C2A] border-gray-400 rounded bg-white/90">
                                         </div>
-                                        <div class="ml-3 text-xs">
-                                            <label for="privacy_policy" class="font-medium text-white cursor-pointer">
-                                                I have read and agreed to the privacy policy.
+                                        <div class="ml-3">
+                                            <label for="privacy_policy" class="text-xs text-white cursor-pointer">
+                                                <span class="font-bold">Privacy Policy:</span> I have read and agree to
+                                                the
                                                 <a href="/Privacy.html"
-                                                    class="text-[#D91C2A] hover:text-[#D91C2A] underline ml-1 font-bold">View
-                                                    Privacy
-                                                    Policy</a>
+                                                    class="text-[#FFD54F] hover:text-[#fec300] underline font-bold">Privacy
+                                                    Policy</a> and
+                                                <a href="/Privacy.html"
+                                                    class="text-[#FFD54F] hover:text-[#fec300] underline font-bold">Terms
+                                                    of Service</a>.
                                             </label>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <!-- Submit Button - full width on all screens -->
-                                <div>
-                                    <button type="submit"
-                                        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-bold text-white bg-[#D91C2A] hover:bg-[#c41926] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D91C2A] focus:ring-offset-gray-900 transition-all duration-150 ease-in-out transform hover:scale-[1.02]">
-                                        Get Free Quote</button>
-                                </div>
-                            </form>
-                        </div>
+                            <!-- Regular Submit Button (at end of form) - UPDATED TO SOLID GOLD -->
+                            <div class="mt-8" id="form-end-button">
+                                <button type="submit"
+                                    class="w-full flex justify-center items-center py-4 px-4 rounded-md shadow-lg text-lg font-bold text-[#0B2C7A] bg-[#FFD54F] hover:bg-[#FFC107] focus:outline-none focus:ring-4 focus:ring-[#D91C2A] transition-all duration-200 ease-in-out transform hover:scale-[1.02] active:scale-[0.98] border-2 border-[#FFD54F] hover:border-[#FFC107]">
+                                    <i class="fas fa-paper-plane mr-2"></i> Get My Free Instant Quote
+                                </button>
+                                <p class="text-center text-white/70 text-xs mt-2">
+                                    <i class="fas fa-lock mr-1"></i> Secure form • No credit card required • No
+                                    obligations
+                                </p>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
-                <!-- Right Content: FAQ (Reduced width and content) -->
-                <div class="lg:w-1/4 scroll-animate mt-20 mb-20">
-                    <div class="bg-white/10 backdrop-blur-sm rounded-lg p-5 h-full">
+                <!-- Right Sidebar: FAQ & Contact -->
+                <div class="lg:w-1/4">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-lg p-5 sticky top-6">
                         <h3 class="text-xl font-bold mb-5 text-[#FFD54F] flex items-center">
                             <i class="fas fa-question-circle mr-2"></i>Common Questions
                         </h3>
@@ -901,6 +1037,25 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                                 <p class="text-xs text-white/70 mt-3">24/7 customer support available</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fixed Bottom Button Container - UPDATED WITH SOLID BACKGROUNDS -->
+        <div id="floating-submit-container"
+            class="fixed bottom-0 left-0 right-0 z-50 transform translate-y-full transition-transform duration-300 ease-out">
+            <div class="max-w-6xl mx-auto px-4 sm:px-8 py-3">
+                <div class="bg-white rounded-lg shadow-2xl p-4 border border-gray-300">
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div class="text-center sm:text-left">
+                            <p class="text-[#0B2C7A] font-bold text-sm sm:text-base">Ready to get your free quote?</p>
+                            <p class="text-gray-600 text-xs">All fields completed ✓</p>
+                        </div>
+                        <button type="submit" form="shippingForm"
+                            class="w-full sm:w-auto flex justify-center items-center py-3 px-8 rounded-md shadow-lg text-base font-bold text-[#0B2C7A] bg-[#FFD54F] hover:bg-[#FFC107] focus:outline-none focus:ring-4 focus:ring-[#D91C2A] transition-all duration-200 ease-in-out transform hover:scale-[1.03] active:scale-[0.97] whitespace-nowrap border-2 border-[#FFD54F] hover:border-[#FFC107]">
+                            <i class="fas fa-paper-plane mr-2"></i> Submit Free Quote Request
+                        </button>
                     </div>
                 </div>
             </div>

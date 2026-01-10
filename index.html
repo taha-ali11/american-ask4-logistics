@@ -274,19 +274,19 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
         }
 
         section .scroll-animate:nth-child(2) {
-            transition-delay: 0.2s;
+            transition-delay: 0.1s;
         }
 
         section .scroll-animate:nth-child(3) {
-            transition-delay: 0.3s;
+            transition-delay: 0.1s;
         }
 
         section .scroll-animate:nth-child(4) {
-            transition-delay: 0.4s;
+            transition-delay: 0.1s;
         }
 
         section .scroll-animate:nth-child(5) {
-            transition-delay: 0.5s;
+            transition-delay: 0.1s;
         }
 
         /* ============================================= */
@@ -610,7 +610,7 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
 
             <div class="flex flex-col lg:flex-row gap-8">
                 <!-- Left Sidebar: Why Choose Us -->
-                <div class="lg:w-1/4">
+                <div class="scroll-animate transition-all duration-200 lg:w-1/4">
                     <div class="bg-white/10 backdrop-blur-sm rounded-lg p-5 sticky top-6">
                         <h3 class="text-xl font-bold mb-5 text-[#FFD54F] flex items-center">
                             <i class="fas fa-star mr-2"></i>Why Choose Us
@@ -708,7 +708,7 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
 
                 <!-- Main Form Area -->
                 <div class="lg:w-2/3">
-                    <div class="scroll-animate w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg shadow-xl relative">
+                    <div class="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg shadow-xl relative">
                         <h2 id="order-section" class="text-center text-3xl md:text-4xl font-bold mb-4 text-white">
                             Get <span class="text-[#FFD54F]">Free</span> Auto Transport Quote
                         </h2>
@@ -857,19 +857,19 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                                             </div>
                                             <div class="border border-gray-500 rounded-lg p-4 hover:bg-white/5 transition-colors cursor-pointer"
                                                 onclick="document.getElementById('transport_enclosed').checked = true">
-                                                <div class="flex items-center">
-                                                    <input id="transport_enclosed" name="transport_type" type="radio"
-                                                        value="Enclosed" required
-                                                        class="h-5 w-5 text-[#0B2C7A] focus:ring-[#0B2C7A] border-gray-400 bg-white/90">
-                                                    <span class="ml-3 text-base font-bold text-white">Enclosed
-                                                        Carrier</span>
+                                                <div class="flex items-center"> <label for="transport_type">
+                                                        <input id="transport_enclosed" name="transport_type"
+                                                            type="radio" value="Enclosed" required
+                                                            class="h-5 w-5 text-[#0B2C7A] focus:ring-[#0B2C7A] border-gray-400 bg-white/90">
+                                                        <span class="ml-3 text-base font-bold text-white">Enclosed
+                                                            Carrier</span>
                                                 </div>
                                                 <p class="text-xs text-white/70 mt-2 ml-8">Maximum protection for luxury
                                                     & classic cars</p>
                                                 <div class="ml-8 mt-1">
                                                     <span
                                                         class="inline-block px-2 py-1 bg-[#FFD54F] text-[#0B2C7A] text-xs rounded font-bold">PREMIUM</span>
-                                                </div>
+                                                </div></label>
                                             </div>
                                         </div>
                                     </div>
@@ -919,7 +919,7 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                                     <div class="flex items-start bg-white/5 p-3 rounded-lg">
                                         <div class="flex items-center h-5">
                                             <input id="sms_consent" name="sms_consent" type="checkbox" required
-                                                class="focus:ring-[#D91C2A] h-4 w-4 text-[#D91C2A] border-gray-400 rounded bg-white/90">
+                                                class="focus:ring-[#D91C2A] h-4 w-4 mt-3.5 text-[#D91C2A] border-gray-400 rounded bg-white/90">
                                         </div>
                                         <div class="ml-3">
                                             <label for="sms_consent" class="text-xs text-white cursor-pointer">
@@ -934,7 +934,7 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                                     <div class="flex items-start bg-white/5 p-3 rounded-lg">
                                         <div class="flex items-center h-5">
                                             <input id="privacy_policy" name="privacy_policy" type="checkbox" required
-                                                class="focus:ring-[#D91C2A] h-4 w-4 text-[#D91C2A] border-gray-400 rounded bg-white/90">
+                                                class="focus:ring-[#D91C2A] h-4 w-4 text-[#D91C2A] border-gray-400 rounded mt-2 bg-white/90">
                                         </div>
                                         <div class="ml-3">
                                             <label for="privacy_policy" class="text-xs text-white cursor-pointer">
@@ -968,7 +968,7 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                 </div>
 
                 <!-- Right Sidebar: FAQ & Contact -->
-                <div class="lg:w-1/4">
+                <div class="scroll-animate transition-all duration-200 lg:w-1/4">
                     <div class="bg-white/10 backdrop-blur-sm rounded-lg p-5 sticky top-6">
                         <h3 class="text-xl font-bold mb-5 text-[#FFD54F] flex items-center">
                             <i class="fas fa-question-circle mr-2"></i>Common Questions
@@ -1048,10 +1048,10 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                         <circle cx="40" cy="40" r="15" fill="#FFD54F" fill-opacity="0.08" />
                         <path d="M40,0 L40,80 M0,40 L80,40" stroke="#D91C2A" stroke-width="1" stroke-opacity="0.1" />
                         <!-- Step Indicators -->
-                        <circle cx="20" cy="20" r="4" fill="#0B2C7A" fill-opacity="0.2" />
-                        <circle cx="60" cy="20" r="4" fill="#0B2C7A" fill-opacity="0.2" />
-                        <circle cx="20" cy="60" r="4" fill="#0B2C7A" fill-opacity="0.2" />
-                        <circle cx="60" cy="60" r="4" fill="#0B2C7A" fill-opacity="0.2" />
+                        <circle cx="20" cy="20" r="4" fill="#0B2C7A" fill-opacity="0.4" />
+                        <circle cx="60" cy="20" r="4" fill="#0B2C7A" fill-opacity="0.4" />
+                        <circle cx="20" cy="60" r="4" fill="#0B2C7A" fill-opacity="0.4" />
+                        <circle cx="60" cy="60" r="4" fill="#0B2C7A" fill-opacity="0.4" />
                     </pattern>
                 </defs>
                 <rect width="100%" height="100%" fill="url(#grid-pattern)" />
@@ -1083,8 +1083,8 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                                 class="flex items-start bg-white p-4 md:p-5 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#FFD54F]/30">
                                 <div class="flex-shrink-0 mr-4">
                                     <div
-                                        class="w-10 h-10 rounded-full bg-gradient-to-br from-[#FFD54F] to-[#FFC107] flex items-center justify-center text-white shadow-sm">
-                                        <span class="font-bold text-base">1</span>
+                                        class="w-10 h-10 rounded-full bg-gradient-to-br from-[#FFD54F] to-[#FFC107] flex items-center justify-center text-white shadow-md">
+                                        <span class="font-bold text-[#1E429F]">1</span>
                                     </div>
                                 </div>
 
@@ -1116,8 +1116,8 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                                 class="flex items-start bg-white p-4 md:p-5 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#0B2C7A]/30">
                                 <div class="flex-shrink-0 mr-4">
                                     <div
-                                        class="w-10 h-10 rounded-full bg-gradient-to-br from-[#0B2C7A] to-[#1E429F] flex items-center justify-center text-white shadow-sm">
-                                        <span class="font-bold text-base">2</span>
+                                        class="w-10 h-10 rounded-full bg-gradient-to-br from-[#0B2C7A] to-[#1E429F] flex items-center justify-center text-white shadow-md">
+                                        <span class="font-bold text-[#1E429F]">2</span>
                                     </div>
                                 </div>
 
@@ -1150,8 +1150,8 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                                 class="flex items-start bg-white p-4 md:p-5 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#D91C2A]/30">
                                 <div class="flex-shrink-0 mr-4">
                                     <div
-                                        class="w-10 h-10 rounded-full bg-gradient-to-br from-[#D91C2A] to-[#c41926] flex items-center justify-center text-white shadow-sm">
-                                        <span class="font-bold text-base">3</span>
+                                        class="w-10 h-10 rounded-full bg-gradient-to-br from-[#D91C2A] to-[#c41926] flex items-center justify-center text-white shadow-md">
+                                        <span class="font-bold text-[#1E429F]">3</span>
                                     </div>
                                 </div>
 
@@ -1184,8 +1184,8 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                                 class="flex items-start bg-white p-4 md:p-5 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#0B2C7A]/30">
                                 <div class="flex-shrink-0 mr-4">
                                     <div
-                                        class="w-10 h-10 rounded-full bg-gradient-to-br from-[#0B2C7A] to-[#1E429F] flex items-center justify-center text-white shadow-sm">
-                                        <span class="font-bold text-base">4</span>
+                                        class="w-10 h-10 rounded-full bg-gradient-to-br from-[#0B2C7A] to-[#1E429F] flex items-center justify-center text-white shadow-lg">
+                                        <span class="font-bold text-[#1E429F]">4</span>
                                     </div>
                                 </div>
 
@@ -1293,30 +1293,57 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
         </div>
     </section>
 
-    <section id="services-section" class="bg-[#F8F9FA] text-[#212121] body-font">
-        <div class=" container px-5 py-16 md:py-20 mx-auto">
-            <!-- Services Title Section with Unique Design -->
+    <section id="services-section" class="text-[#212121] body-font relative overflow-hidden">
+        <!-- Main gradient background using your logo colors -->
+        <div class="absolute inset-0 bg-gradient-to-br from-white via-[#0B2C7A]/[0.03] to-[#D91C2A]/[0.02]"></div>
+
+        <!-- Subtle diagonal pattern with brand colors -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="
+            background-image: 
+                linear-gradient(45deg, #0B2C7A 1px, transparent 1px),
+                linear-gradient(-45deg, #D91C2A 1px, transparent 1px);
+            background-size: 60px 60px;
+        "></div>
+        </div>
+
+        <!-- Decorative corner accents -->
+        <div class="absolute top-0 right-0 w-64 h-64 -translate-y-32 translate-x-32">
+            <div class="absolute inset-0 bg-gradient-to-bl from-[#0B2C7A]/10 to-transparent rounded-full blur-3xl">
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 translate-y-32 -translate-x-32">
+            <div class="absolute inset-0 bg-gradient-to-tr from-[#D91C2A]/10 to-transparent rounded-full blur-3xl">
+            </div>
+        </div>
+
+        <div class="container px-5 py-16 md:py-20 mx-auto relative z-10">
+            <!-- Services Title Section -->
             <div class="text-center w-full mb-16 md:mb-20 relative">
-                <!-- Decorative Background Element -->
-                <div
-                    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-[#D91C2A]/10 to-transparent rounded-full blur-3xl opacity-50">
+                <!-- Decorative elements -->
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-[#0B2C7A]/10 via-transparent to-[#D91C2A]/10 rounded-full blur-3xl">
+                    </div>
                 </div>
 
                 <!-- Badge Element -->
-                <div class=" inline-flex items-center px-4 py-2 mb-6 bg-white  rounded-full border border-gray-300">
+                <div
+                    class="inline-flex items-center px-4 py-2 mb-6 bg-white/90 backdrop-blur-sm rounded-full border border-gray-200 shadow-sm">
                     <span class="text-md font-bold text-[#212121] uppercase tracking-wider">Comprehensive Auto Transport
                         Services</span>
                 </div>
 
                 <!-- Main Title -->
                 <h1 class="sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 relative z-10">
-                    <span class=" text-[#212121] text-lg max-w-2xl mx-auto">
-                        Specialized solutions for every vehicle type across the continental United States </span>
+                    <span class="text-[#212121] text-lg max-w-2xl mx-auto">
+                        Specialized solutions for every vehicle type across the continental United States
+                    </span>
                 </h1>
 
-                <!-- Subtitle with Icon -->
-                <div class=" max-w-2xl mx-auto">
-                    <p class="text-lg md:text-xl text-[#0B2C7A] mb-6 relative z-10">
+                <!-- Subtitle -->
+                <div class="max-w-2xl mx-auto">
+                    <p class="text-lg md:text-xl text-[#0B2C7A] mb-6 relative z-10 font-medium">
                         Whatever your vehicle shipping needs, we provide tailored solutions that prioritize safety,
                         efficiency, and peace of mind.
                     </p>
@@ -1332,176 +1359,163 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                 </div>
             </div>
 
-            <!-- Services Cards Container with White Background -->
-            <div class="relative bg-white rounded-3xl shadow-2xl overflow-hidden p-8 md:p-10">
-                <!-- Pattern Overlay on White Background - UPDATED SVG PATTERN -->
-                <div class="absolute inset-0 opacity-[0.02]">
-                    <div class="absolute inset-0"
-                        style="background-image: url('data:image/svg+xml,%3Csvg width=%2280%22 height=%2280%22 viewBox=%220 0 80 80%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%230B2C7A%22 fill-opacity=%220.4%22%3E%3Cpath d=%22M50 50c0-5.523-4.477-10-10-10s-10 4.477-10 10 4.477 10 10 10 10-4.477 10-10zm-10 8c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E'); background-size: 40px 40px;">
+            <!-- Services Cards Grid - Directly placed on background -->
+            <div class="relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1: Open Transport -->
+                    <div
+                        class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200/50 hover:border-[#D91C2A]/30">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#D91C2A] to-[#D91C2A]/80">
+                        </div>
+                        <!-- Image Container -->
+                        <div class="h-48 w-full overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+                            <img src="/src/assets/ing.Webp" alt="Open auto transport trailer with multiple vehicles"
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#212121] mb-3">Open Auto Transport</h3>
+                            <p class="text-[#212121]/80 mb-4">
+                                Cost-effective shipping for standard vehicles with nationwide coverage.
+                            </p>
+                            <a href="#order-section"
+                                class="inline-flex items-center text-[#0B2C7A] font-bold hover:text-[#D91C2A] transition-colors duration-300 text-sm">
+                                Get Quote &RightArrow;
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Service 2: Enclosed Transport -->
+                    <div
+                        class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200/50 hover:border-[#0B2C7A]/30">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#0B2C7A] to-[#0B2C7A]/80">
+                        </div>
+                        <div class="h-48 w-full overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+                            <img src="src/assets/MST.Webp" alt="Enclosed luxury car transport trailer"
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#212121] mb-3">Enclosed Transport</h3>
+                            <p class="text-[#212121]/80 mb-4">
+                                Ideal for luxury and classic vehicles. Fully enclosed carriers protect from weather
+                                and road debris.
+                            </p>
+                            <a href="#order-section"
+                                class="inline-flex items-center text-[#0B2C7A] font-bold hover:text-[#D91C2A] transition-colors duration-300 text-sm">
+                                Get Quote &RightArrow;
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Service 3: Dealer Services -->
+                    <div
+                        class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200/50 hover:border-[#D91C2A]/30">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#D91C2A] to-[#D91C2A]/80">
+                        </div>
+                        <div class="h-48 w-full overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+                            <img src="src/assets/clirntservice.Webp"
+                                alt="Car dealership with multiple vehicles ready for transport"
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#212121] mb-3">Dealer & Fleet Services</h3>
+                            <p class="text-[#212121]/80 mb-4">
+                                Specialized logistics for dealerships, auctions, and fleets with volume discounts
+                                available.
+                            </p>
+                            <a href="#order-section"
+                                class="inline-flex items-center text-[#0B2C7A] font-bold hover:text-[#D91C2A] transition-colors duration-300 text-sm">
+                                Get Quote &RightArrow;
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Service 4: Motorcycle Transport -->
+                    <div
+                        class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200/50 hover:border-[#0B2C7A]/30">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#0B2C7A] to-[#0B2C7A]/80">
+                        </div>
+                        <div class="h-48 w-full overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+                            <img src="/src/assets/img.Webp" alt="Motorcycle being loaded onto transport trailer"
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#212121] mb-3">Motorcycle Transport</h3>
+                            <p class="text-[#212121]/80 mb-4">
+                                Specialized handling for motorcycles and powersports vehicles with secure tie-down
+                                systems.
+                            </p>
+                            <a href="#order-section"
+                                class="inline-flex items-center text-[#0B2C7A] font-bold hover:text-[#D91C2A] transition-colors duration-300 text-sm">
+                                Get Quote &RightArrow;
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Service 5: RV & Boat Transport -->
+                    <div
+                        class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200/50 hover:border-[#D91C2A]/30">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#D91C2A] to-[#D91C2A]/80">
+                        </div>
+                        <div class="h-48 w-full overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+                            <img src="/src/assets/imgB.Webp" alt="RV and boat transport on trailer"
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#212121] mb-3">RV & Boat Transport</h3>
+                            <p class="text-[#212121]/80 mb-4">
+                                Transport for RVs, campers, boats, and oversized vehicles with permit handling
+                                included.
+                            </p>
+                            <a href="#order-section"
+                                class="inline-flex items-center text-[#0B2C7A] font-bold hover:text-[#D91C2A] transition-colors duration-300 text-sm">
+                                Get Quote &RightArrow;
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Service 6: International Shipping -->
+                    <div
+                        class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200/50 hover:border-[#0B2C7A]/30">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#0B2C7A] to-[#0B2C7A]/80">
+                        </div>
+                        <div class="h-48 w-full overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+                            <img src="/src/assets/imgRV.Webp" alt="Trailer shipping across America"
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#212121] mb-3">Trailer Shipping</h3>
+                            <p class="text-[#212121]/80 mb-4">
+                                Domestic nationwide trailer transport across America, delivering reliable and
+                                compliant logistics from coast to coast.
+                            </p>
+                            <a href="#order-section"
+                                class="inline-flex items-center text-[#0B2C7A] font-bold hover:text-[#D91C2A] transition-colors duration-300 text-sm">
+                                Get Quote &RightArrow;
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="relative z-10">
-                    <!-- Services Grid -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Service 1: Open Transport -->
-                        <div
-                            class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
-                            <div class="absolute top-0 left-0 w-full h-1 bg-[#D91C2A]"></div>
-                            <!-- Image Container -->
-                            <div class="h-48 w-full overflow-hidden bg-gray-100">
-                                <img src="/src/assets/ing.Webp" alt="Open auto transport trailer with multiple vehicles"
-                                    class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
-                            </div>
-                            <div class="p-6">
-                                <!-- Service Icon -->
-                                <h3 class="text-xl font-bold text-[#212121] mb-3">Open Auto Transport</h3>
-                                <p class="text-[#212121] mb-4">
-                                    Cost-effective shipping for standard vehicles with nationwide coverage.
-                                </p>
-
-                                <a href="#order-section"
-                                    class="inline-flex items-center text-[#0B2C7A] font-bold hover:text-[#D91C2A] transition-colors duration-300 text-sm">
-                                    Get Quote &RightArrow;
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Service 2: Enclosed Transport -->
-                        <div
-                            class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
-                            <div class="absolute top-0 left-0 w-full h-1 bg-[#0B2C7A]"></div>
-                            <!-- Image Container -->
-                            <div class="h-48 w-full overflow-hidden bg-gray-100">
-                                <img src="src/assets/MST.Webp" alt="Enclosed luxury car transport trailer"
-                                    class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold text-[#212121] mb-3">Enclosed Transport</h3>
-                                <p class="text-[#212121] mb-4">
-                                    Ideal for luxury and classic vehicles. Fully enclosed carriers protect from weather
-                                    and road debris.
-                                </p>
-
-                                <a href="#order-section"
-                                    class="inline-flex items-center text-[#0B2C7A] font-bold hover:text-[#D91C2A] transition-colors duration-300 text-sm">
-                                    Get Quote &RightArrow;
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Service 3: Dealer Services -->
-                        <div
-                            class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
-                            <div class="absolute top-0 left-0 w-full h-1 bg-[#D91C2A]"></div>
-                            <!-- Image Container -->
-                            <div class="h-48 w-full overflow-hidden bg-gray-100">
-                                <img src="src/assets/clirntservice.Webp"
-                                    alt="Car dealership with multiple vehicles ready for transport"
-                                    class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold text-[#212121] mb-3">Dealer & Fleet Services</h3>
-                                <p class="text-[#212121] mb-4">
-                                    Specialized logistics for dealerships, auctions, and fleets with volume discounts
-                                    available.
-                                </p>
-
-                                <a href="#order-section"
-                                    class="inline-flex items-center text-[#0B2C7A] font-bold hover:text-[#D91C2A] transition-colors duration-300 text-sm">
-                                    Get Quote &RightArrow;
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Service 4: Motorcycle Transport -->
-                        <div
-                            class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
-                            <div class="absolute top-0 left-0 w-full h-1 bg-[#0B2C7A]"></div>
-                            <!-- Image Container -->
-                            <div class="h-48 w-full overflow-hidden bg-gray-100">
-                                <img src="/src/assets/img.Webp" alt="Motorcycle being loaded onto transport trailer"
-                                    class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold text-[#212121] mb-3">Motorcycle Transport</h3>
-                                <p class="text-[#212121] mb-4">
-                                    Specialized handling for motorcycles and powersports vehicles with secure tie-down
-                                    systems.
-                                </p>
-
-                                <a href="#order-section"
-                                    class="inline-flex items-center text-[#0B2C7A] font-bold hover:text-[#D91C2A] transition-colors duration-300 text-sm">
-                                    Get Quote &RightArrow;
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Service 5: RV & Boat Transport -->
-                        <div
-                            class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
-                            <div class="absolute top-0 left-0 w-full h-1 bg-[#D91C2A]"></div>
-                            <!-- Image Container -->
-                            <div class="h-48 w-full overflow-hidden bg-gray-100">
-                                <img src="/src/assets/imgB.Webp" alt="RV and boat transport on trailer"
-                                    class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold text-[#212121] mb-3">RV & Boat Transport</h3>
-                                <p class="text-[#212121] mb-4">
-                                    Transport for RVs, campers, boats, and oversized vehicles with permit handling
-                                    included.
-                                </p>
-
-                                <a href="#order-section"
-                                    class="inline-flex items-center text-[#0B2C7A] font-bold hover:text-[#D91C2A] transition-colors duration-300 text-sm">
-                                    Get Quote &RightArrow;
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Service 6: International Shipping -->
-                        <div
-                            class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
-                            <div class="absolute top-0 left-0 w-full h-1 bg-[#0B2C7A]"></div>
-                            <!-- Image Container -->
-                            <div class="h-48 w-full overflow-hidden bg-gray-100">
-                                <img src="/src/assets/imgRV.Webp" alt="Trailer shipping across America"
-                                    class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold text-[#212121] mb-3">Trailer Shipping</h3>
-                                <p class="text-[#212121] mb-4">
-                                    Domestic nationwide trailer transport across America, delivering reliable and
-                                    compliant logistics from coast to coast.
-                                </p>
-
-                                <a href="#order-section"
-                                    class="inline-flex items-center text-[#0B2C7A] font-bold hover:text-[#D91C2A] transition-colors duration-300 text-sm">
-                                    Get Quote &RightArrow;
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Section CTA -->
-                    <div class="text-center mt-12 pt-8 border-t border-gray-100">
-                        <p class="text-lg text-[#212121] mb-6">Ready to ship your vehicle?</p>
-                        <a href="#order-section"
-                            class="inline-flex items-center px-8 py-4 text-lg font-bold text-white bg-[#D91C2A] rounded-xl shadow-lg hover:bg-[#c41926] hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
-                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
-                                </path>
-                            </svg>
-                            Get Your Free Quote Today
-                        </a>
-                    </div>
+                <!-- Section CTA -->
+                <div class="text-center mt-16 pt-8 border-t border-gray-300/30">
+                    <p class="text-lg text-[#212121] mb-6 font-medium">Ready to ship your vehicle?</p>
+                    <a href="#order-section"
+                        class="inline-flex items-center px-8 py-4 text-lg font-bold text-white bg-[#c41926] rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 hover:from-[#c41926] hover:to-[#b01723]">
+                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                            </path>
+                        </svg>
+                        Get Your Free Quote Today
+                    </a>
                 </div>
             </div>
         </div>
     </section>
+
+
+
     <section>
         <div class="w-full py-8 px-5 bg-[#0B2C7A] relative overflow-hidden">
             <!-- Optional subtle pattern overlay - UPDATED SVG PATTERN -->

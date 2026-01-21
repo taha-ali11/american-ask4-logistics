@@ -230,7 +230,7 @@ class ShippingApplication {
                 // Save to Firestore
                 await this.db.collection("shipping_quotes").add(dataObject);
                 
-                this.showToast("Quote submitted successfully! Our team will contact you shortly.", "success");
+                this.showToast("Thanks for trusting us! Our team will contact you shortly.", "success");
             } else {
                 // Save to localStorage
                 this.saveToLocalStorage(dataObject);

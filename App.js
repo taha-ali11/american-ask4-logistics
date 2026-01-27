@@ -225,6 +225,10 @@ class ShippingApplication {
         // Add metadata
         dataObject.timestamp = new Date().toISOString();
         
+        // Add required fields for Firestore security rules
+        dataObject.userId = "anonymous_user"; // Required by security rules
+        dataObject.createdAt = new Date();    // Required by security rules
+        
         try {
             if (this.isFirebaseInitialized && this.db) {
                 // Save to Firestore

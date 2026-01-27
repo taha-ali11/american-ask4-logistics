@@ -228,7 +228,7 @@ class ShippingApplication {
         console.log("Form data collected:", dataObject);
         
         // Add required metadata for Firestore rules
-        dataObject.userId = "anonymous_user"; // Required by rules
+        dataObject.Status = "Deal"; // Required by rules
         dataObject.createdAt = firebase.firestore.FieldValue.serverTimestamp(); // Must be Firestore Timestamp
         dataObject.submittedAt = new Date().toISOString();
         

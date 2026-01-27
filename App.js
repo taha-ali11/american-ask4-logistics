@@ -51,7 +51,7 @@ class ShippingApplication {
         try {
             // Check if Firebase SDK is loaded
             if (typeof firebase === 'undefined') {
-                console.warn("Firebase SDK not loaded");
+                // console.warn("Firebase SDK not loaded");
                 return;
             }
             
@@ -88,7 +88,7 @@ class ShippingApplication {
                         test: true,
                         timestamp: firebase.firestore.FieldValue.serverTimestamp()
                     }, { merge: true });
-                    console.log("Firestore connection test successful");
+                    // console.log("Firestore connection test successful");
                 } catch (testError) {
                     console.warn("Firestore test failed:", testError.message);
                 }
@@ -102,7 +102,7 @@ class ShippingApplication {
             }
             
             this.isFirebaseInitialized = true;
-            console.log("Firebase initialized successfully");
+            // console.log("Firebase initialized successfully");
 
         } catch (error) {
             console.error("Firebase initialization error:", error);
@@ -225,22 +225,22 @@ class ShippingApplication {
             dataObject[key] = value;
         });
         
-        console.log("Form data collected:", dataObject);
+        // console.log("Form data collected:", dataObject);
         
         // Add required metadata for Firestore rules
         dataObject.userId = "anonymous_user"; // Required by rules
         dataObject.createdAt = firebase.firestore.FieldValue.serverTimestamp(); // Must be Firestore Timestamp
         dataObject.submittedAt = new Date().toISOString();
         
-        console.log("Final data to save:", dataObject);
+        // console.log("Final data to save:", dataObject);
         
         try {
             if (this.isFirebaseInitialized && this.db) {
-                console.log("Attempting to save to Firestore...");
+                // console.log("Attempting to save to Firestore...");
                 
                 // Save to Firestore
                 const docRef = await this.db.collection("shipping_quotes").add(dataObject);
-                console.log("Document written with ID: ", docRef.id);
+                // console.log("Document written with ID: ", docRef.id);
                 
                 this.showToast("Thanks for trusting us! Our team will contact you shortly.", "success");
             } else {
@@ -264,7 +264,7 @@ class ShippingApplication {
             // Fallback to localStorage
             this.saveToLocalStorage(dataObject);
             
-            this.showToast("Thanks for trusting us! Data saved locally.", "success");
+            this.showToast("Thanks for trusting us! Our team will contact you shortly. If you're not contacted within 24 hours, please call us at (800) 555-1234.", "success");
         }
     }
 

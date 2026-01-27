@@ -86,10 +86,11 @@ class ShippingApplication {
                 try {
                     await this.db.collection('connection_test').doc('test').set({
                         test: true,
-                        timestamp: new Date().toISOString()
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
                     }, { merge: true });
+                    console.log("Firestore connection test successful");
                 } catch (testError) {
-                    // Silent fail - permissions or connectivity issue
+                    console.warn("Firestore test failed:", testError.message);
                 }
             } else {
                 throw new Error("Firestore not available");
@@ -101,9 +102,10 @@ class ShippingApplication {
             }
             
             this.isFirebaseInitialized = true;
+            console.log("Firebase initialized successfully");
 
-            
         } catch (error) {
+            console.error("Firebase initialization error:", error);
             this.isFirebaseInitialized = false;
             
             setTimeout(() => {
@@ -201,7 +203,7 @@ class ShippingApplication {
     }
 
     // =============================================
-    // FORM HANDLING MODULE
+    // FORM HANDLING MODULE - UPDATED
     // =============================================
     initializeFormHandler() {
         const shippingForm = document.getElementById('shippingForm');
@@ -218,24 +220,31 @@ class ShippingApplication {
         const formData = new FormData(form);
         const dataObject = {};
         
+        // Collect form data
         formData.forEach((value, key) => {
             dataObject[key] = value;
         });
         
-        // Add metadata
-        dataObject.timestamp = new Date().toISOString();
+        console.log("Form data collected:", dataObject);
         
-        // Add required fields for Firestore security rules
-        dataObject.userId = "anonymous_user"; // Required by security rules
-        dataObject.createdAt = new Date();    // Required by security rules
+        // Add required metadata for Firestore rules
+        dataObject.userId = "anonymous_user"; // Required by rules
+        dataObject.createdAt = firebase.firestore.FieldValue.serverTimestamp(); // Must be Firestore Timestamp
+        dataObject.submittedAt = new Date().toISOString();
+        
+        console.log("Final data to save:", dataObject);
         
         try {
             if (this.isFirebaseInitialized && this.db) {
+                console.log("Attempting to save to Firestore...");
+                
                 // Save to Firestore
-                await this.db.collection("shipping_quotes").add(dataObject);
+                const docRef = await this.db.collection("shipping_quotes").add(dataObject);
+                console.log("Document written with ID: ", docRef.id);
                 
                 this.showToast("Thanks for trusting us! Our team will contact you shortly.", "success");
             } else {
+                console.log("Firestore not available, saving locally");
                 // Save to localStorage
                 this.saveToLocalStorage(dataObject);
                 
@@ -246,6 +255,12 @@ class ShippingApplication {
             form.reset();
             
         } catch (error) {
+            console.error("Firestore save error:", {
+                code: error.code,
+                message: error.message,
+                stack: error.stack
+            });
+            
             // Fallback to localStorage
             this.saveToLocalStorage(dataObject);
             
@@ -256,8 +271,15 @@ class ShippingApplication {
     saveToLocalStorage(data) {
         try {
             let saved = JSON.parse(localStorage.getItem('offline_quotes') || '[]');
+            
+            // Convert Firestore timestamp to string for localStorage
+            const dataForStorage = { ...data };
+            if (dataForStorage.createdAt && typeof dataForStorage.createdAt.toDate === 'function') {
+                dataForStorage.createdAt = dataForStorage.createdAt.toDate().toISOString();
+            }
+            
             saved.push({
-                ...data,
+                ...dataForStorage,
                 id: Date.now(),
                 synced: false
             });
@@ -268,8 +290,9 @@ class ShippingApplication {
             }
             
             localStorage.setItem('offline_quotes', JSON.stringify(saved));
+            console.log("Data saved to localStorage");
         } catch (error) {
-            // Silent error for localStorage
+            console.error("LocalStorage save error:", error);
         }
     }
 

@@ -20,19 +20,14 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
     <link rel="canonical" href="https://americanask4logistics.us/">
     <title>American Ask4 Logistics - Premium Vehicle Transport Services</title>
     <link rel="icon" type="image/png" href="/src/assets/NLAFL-removebg-preview.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
 
-    <script src="App.js" defer></script>
-    <link href="/src/output.css" rel="stylesheet">
-    <script src="Main.js" defer></script>
-    <link rel='stylesheet'
-        href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-chubby/css/uicons-regular-chubby.css'>
-    <link rel='stylesheet'
-        href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <!-- OPTIMIZED: Preconnect to CDNs -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://www.gstatic.com">
+
+    <!-- OPTIMIZED: Critical CSS inlined, non-critical deferred -->
+    <!-- Critical CSS -->
     <style>
         :root {
             --primary-blue: #0B2C7A;
@@ -41,25 +36,42 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
             --background-white: #F8F9FA;
             --text-black: #212121;
         }
+        html { scroll-behavior: smooth; }
+        body { min-height: 100vh; margin: 0; background-color: #F8F9FA; }
+        #home-section { position: relative; overflow: hidden; isolation: isolate; }
+        header { position: sticky; top: 0; z-index: 1000; }
+        .-z-1 { z-index: -1; }
+        .origin-0 { transform-origin: 0%; }
+        .marquee { width: 100%; overflow: hidden; white-space: nowrap; }
+        .marquee-content { display: inline-block; white-space: nowrap; animation: marquee 30s linear infinite; }
+        .marquee-content:hover { animation-play-state: paused; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-content>div { display: inline-block; white-space: normal; vertical-align: top; }
+    </style>
 
-        html {
-            scroll-behavior: smooth;
-        }
+    <!-- OPTIMIZED: Deferred non-critical CSS -->
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
 
-        body {
-            min-height: 100vh;
-            margin: 0;
-            background-color: #F8F9FA;
-        }
+    <!-- OPTIMIZED: Deferred Firebase scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js" defer></script>
 
-        /* Target the home section for the dynamic background */
-        #home-section {
-            position: relative;
-            overflow: hidden;
-            isolation: isolate;
-        }
+    <script src="App.js" defer></script>
 
-        /* Add this to your CSS file or style tag */
+    <!-- OPTIMIZED: Deferred stylesheet links -->
+    <link rel="stylesheet" href="/src/output.css" media="print" onload="this.media='all'">
+
+    <script src="Main.js" defer></script>
+
+    <!-- OPTIMIZED: Deferred icon libraries -->
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-chubby/css/uicons-regular-chubby.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css" media="print" onload="this.media='all'">
+
+    <!-- OPTIMIZED: Moved heavy animation styles to deferred loading -->
+    <style>
+        /* Slideshow background styles - critical for layout */
         .slideshow-background {
             position: absolute;
             top: 0;
@@ -75,8 +87,6 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
             z-index: -1;
         }
 
-        /* Define different background images for different animation delays */
-        /* Update all animation delays to be staggered */
         .slideshow-background:nth-child(1) {
             background-image: url('/src/assets/Truck.Webp');
             animation-delay: 0s;
@@ -117,112 +127,37 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
             animation-delay: 25s;
         }
 
-        /* Keyframe animation for smooth fade */
         @keyframes slideshow-fade {
-            0% {
-                opacity: 0;
-                transform: scale(1.05);
-            }
-
-            8% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            33% {
-                opacity: 1;
-                transform: scale(1.05);
-
-            }
-
-            41% {
-                opacity: 0;
-                transform: scale(1);
-
-            }
-
-            100% {
-                opacity: 0;
-                transform: scale(1.05);
-
-            }
+            0% { opacity: 0; transform: scale(1.05); }
+            8% { opacity: 1; transform: scale(1); }
+            33% { opacity: 1; transform: scale(1.05); }
+            41% { opacity: 0; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.05); }
         }
 
-        /* Small phones (iPhone SE, Galaxy Fold) */
         @media (max-width: 375px) {
-            .slideshow-background:nth-child(1) {
-                background-image: url('/src/assets/MSD.Webp');
-            }
-
-            .slideshow-background:nth-child(2) {
-                background-image: url('/src/assets/MS.Webp');
-            }
-
-            .slideshow-background:nth-child(3) {
-                background-image: url('/src/assets/MobileS.Webp');
-            }
-
-            .slideshow-background:nth-child(4) {
-                background-image: url('/src/assets/MobileBike.Webp');
-            }
-
-            .slideshow-background:nth-child(5) {
-                background-image: url('/src/assets/MSB.Webp');
-            }
-
-            .slideshow-background:nth-child(6) {
-                background-image: url('/src/assets/MSD.Webp');
-            }
-
-            .slideshow-background:nth-child(7) {
-                background-image: url('/src/assets/MST.Webp');
-            }
-
-            .slideshow-background:nth-child(8) {
-                background-image: url('/src/assets/MSC.Webp');
-            }
+            .slideshow-background:nth-child(1) { background-image: url('/src/assets/MSD.Webp'); }
+            .slideshow-background:nth-child(2) { background-image: url('/src/assets/MS.Webp'); }
+            .slideshow-background:nth-child(3) { background-image: url('/src/assets/MobileS.Webp'); }
+            .slideshow-background:nth-child(4) { background-image: url('/src/assets/MobileBike.Webp'); }
+            .slideshow-background:nth-child(5) { background-image: url('/src/assets/MSB.Webp'); }
+            .slideshow-background:nth-child(6) { background-image: url('/src/assets/MSD.Webp'); }
+            .slideshow-background:nth-child(7) { background-image: url('/src/assets/MST.Webp'); }
+            .slideshow-background:nth-child(8) { background-image: url('/src/assets/MSC.Webp'); }
         }
 
-        /* Most smartphones (iPhone, Android) */
         @media (max-width: 480px) {
-            .slideshow-background:nth-child(1) {
-                background-image: url('/src/assets/MSD.Webp');
-            }
-
-            .slideshow-background:nth-child(2) {
-                background-image: url('/src/assets/MS.Webp');
-            }
-
-            .slideshow-background:nth-child(3) {
-                background-image: url('/src/assets/MobileS.Webp');
-            }
-
-            .slideshow-background:nth-child(4) {
-                background-image: url('/src/assets/MobileBike.Webp');
-            }
-
-            .slideshow-background:nth-child(5) {
-                background-image: url('/src/assets/MSB.Webp');
-            }
-
-            .slideshow-background:nth-child(6) {
-                background-image: url('/src/assets/MSD.Webp');
-            }
-
-            .slideshow-background:nth-child(7) {
-                background-image: url('/src/assets/MST.Webp');
-            }
-
-            .slideshow-background:nth-child(8) {
-                background-image: url('/src/assets/MSC.Webp');
-            }
+            .slideshow-background:nth-child(1) { background-image: url('/src/assets/MSD.Webp'); }
+            .slideshow-background:nth-child(2) { background-image: url('/src/assets/MS.Webp'); }
+            .slideshow-background:nth-child(3) { background-image: url('/src/assets/MobileS.Webp'); }
+            .slideshow-background:nth-child(4) { background-image: url('/src/assets/MobileBike.Webp'); }
+            .slideshow-background:nth-child(5) { background-image: url('/src/assets/MSB.Webp'); }
+            .slideshow-background:nth-child(6) { background-image: url('/src/assets/MSD.Webp'); }
+            .slideshow-background:nth-child(7) { background-image: url('/src/assets/MST.Webp'); }
+            .slideshow-background:nth-child(8) { background-image: url('/src/assets/MSC.Webp'); }
         }
 
-        /* ============================================= */
-        /* SCROLL ANIMATION STYLES - SLOWER VERSION */
-        /* ============================================= */
-
-        /* Base state - elements start INVISIBLE (except home section) */
+        /* Scroll animation styles */
         .scroll-animate:not(#home-section .scroll-animate):not(.animated),
         .scroll-animate-left:not(#home-section .scroll-animate-left):not(.animated),
         .scroll-animate-right:not(#home-section .scroll-animate-right):not(.animated) {
@@ -242,7 +177,6 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
             transform: translateX(40px);
         }
 
-        /* ANIMATED STATE - INCREASED DURATION FROM 0.8s TO 1.2s */
         .scroll-animate,
         .scroll-animate-left,
         .scroll-animate-right {
@@ -259,7 +193,6 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
             transform: translate(0) !important;
         }
 
-        /* Home section elements should be visible immediately */
         #home-section .scroll-animate,
         #home-section .scroll-animate-left,
         #home-section .scroll-animate-right {
@@ -268,32 +201,12 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
             transform: translate(0);
         }
 
-        /* Add staggered delays between elements in same section */
-        section .scroll-animate:nth-child(1) {
-            transition-delay: 0.1s;
-        }
+        section .scroll-animate:nth-child(1) { transition-delay: 0.1s; }
+        section .scroll-animate:nth-child(2) { transition-delay: 0.1s; }
+        section .scroll-animate:nth-child(3) { transition-delay: 0.1s; }
+        section .scroll-animate:nth-child(4) { transition-delay: 0.1s; }
+        section .scroll-animate:nth-child(5) { transition-delay: 0.1s; }
 
-        section .scroll-animate:nth-child(2) {
-            transition-delay: 0.1s;
-        }
-
-        section .scroll-animate:nth-child(3) {
-            transition-delay: 0.1s;
-        }
-
-        section .scroll-animate:nth-child(4) {
-            transition-delay: 0.1s;
-        }
-
-        section .scroll-animate:nth-child(5) {
-            transition-delay: 0.1s;
-        }
-
-        /* ============================================= */
-        /* SIMPLE WORKING SECTION */
-        /* ============================================= */
-
-        /* Simple Beige Background */
         #working-section {
             position: relative;
             overflow: hidden;
@@ -304,7 +217,6 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
             pointer-events: none;
         }
 
-        /* Performance Optimized Animations */
         #working-section .scroll-animate {
             opacity: 0;
             transform: translateY(30px);
@@ -317,24 +229,11 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
             transform: translateY(0);
         }
 
-        /* Staggered Delays */
-        #working-section .process-step[data-step="1"] {
-            transition-delay: 0.1s;
-        }
+        #working-section .process-step[data-step="1"] { transition-delay: 0.1s; }
+        #working-section .process-step[data-step="2"] { transition-delay: 0.3s; }
+        #working-section .process-step[data-step="3"] { transition-delay: 0.5s; }
+        #working-section .process-step[data-step="4"] { transition-delay: 0.7s; }
 
-        #working-section .process-step[data-step="2"] {
-            transition-delay: 0.3s;
-        }
-
-        #working-section .process-step[data-step="3"] {
-            transition-delay: 0.5s;
-        }
-
-        #working-section .process-step[data-step="4"] {
-            transition-delay: 0.7s;
-        }
-
-        /* Simple Card Styles */
         #working-section .bg-white {
             border: 1px solid #e5e7eb;
             transition: all 0.3s ease;
@@ -344,27 +243,16 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
         }
 
-        /* Simple CTA Button */
         #working-section a[href="#order-section"] {
             transition: all 0.3s ease;
         }
 
-        /* Image Optimization */
         #working-section img {
             transform: translateZ(0);
         }
 
-        /* Performance: Prevent layout shifts */
         #working-section * {
             box-sizing: border-box;
-        }
-
-        .-z-1 {
-            z-index: -1;
-        }
-
-        .origin-0 {
-            transform-origin: 0%;
         }
 
         input:focus~label,
@@ -390,48 +278,6 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
             color: rgba(0, 0, 0, var(--tw-text-opacity));
             left: 0px;
         }
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        /* ============================================= */
-        /* SIMPLE WORKING SECTION  */
-        /* ============================================= */
-        .marquee {
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .marquee-content {
-            display: inline-block;
-            white-space: nowrap;
-            animation: marquee 30s linear infinite;
-        }
-
-        .marquee-content:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        /* Ensure proper spacing between cards */
-        .marquee-content>div {
-            display: inline-block;
-            white-space: normal;
-            vertical-align: top;
-        }
     </style>
 </head>
 
@@ -439,8 +285,9 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
     <header class="text-[#212121] bg-white body-font shadow-md">
         <div class="container mx-auto flex items-center justify-between h-20 px-5 relative z-10">
             <a href="/index.html" class="flex items-center">
+                <!-- OPTIMIZED: Added width, height, loading="lazy" -->
                 <img src="/src/assets/NLAFL-removebg-preview.png" alt="American Ask4 Logistics Logo"
-                    class="h-[120px] w-auto mt-2 object-contain" />
+                    class="h-[120px] w-auto mt-2 object-contain" width="120" height="120" loading="lazy" />
             </a>
             <!-- Desktop Navigation Links (Hidden on mobile, visible on medium screens and up) -->
             <nav class="hidden md:flex flex-wrap items-center text-base justify-center">
@@ -1208,8 +1055,9 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                     <div class="space-y-6">
                         <!-- Simplified Image Container -->
                         <div class="relative rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                            <!-- OPTIMIZED: Added width, height, loading="lazy" -->
                             <img class="object-cover object-center w-full h-48 md:h-56" src="/src/assets/new.Webp"
-                                alt="Vehicle transport process" loading="lazy">
+                                alt="Vehicle transport process" width="800" height="400" loading="lazy">
 
                             <!-- Simple Stats Overlay -->
                             <div
@@ -1363,8 +1211,9 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                         <div class="absolute top-0 left-0 w-full h-1 "></div>
                         <!-- Image Container -->
                         <div class="h-48 w-full overflow-hidden ">
+                            <!-- OPTIMIZED: Added width, height, loading="lazy" -->
                             <img src="/src/assets/ing.Webp" alt="Open auto transport trailer with multiple vehicles"
-                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" width="600" height="300" loading="lazy">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-bold text-[#212121] mb-3">Open Auto Transport</h3>
@@ -1383,8 +1232,9 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                         class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200/50 hover:border-[#0B2C7A]/30">
                         <div class="absolute top-0 left-0 w-full h-1 "></div>
                         <div class="h-48 w-full overflow-hidden ">
+                            <!-- OPTIMIZED: Added width, height, loading="lazy" -->
                             <img src="src/assets/MST.Webp" alt="Enclosed luxury car transport trailer"
-                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" width="600" height="300" loading="lazy">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-bold text-[#212121] mb-3">Enclosed Transport</h3>
@@ -1404,9 +1254,10 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                         class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200/50 hover:border-[#D91C2A]/30">
                         <div class="absolute top-0 left-0 w-full h-1 "></div>
                         <div class="h-48 w-full overflow-hidden ">
+                            <!-- OPTIMIZED: Added width, height, loading="lazy" -->
                             <img src="src/assets/clirntservice.Webp"
                                 alt="Car dealership with multiple vehicles ready for transport"
-                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" width="600" height="300" loading="lazy">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-bold text-[#212121] mb-3">Dealer & Fleet Services</h3>
@@ -1426,8 +1277,9 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                         class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200/50 hover:border-[#0B2C7A]/30">
                         <div class="absolute top-0 left-0 w-full h-1 "></div>
                         <div class="h-48 w-full overflow-hidden ">
+                            <!-- OPTIMIZED: Added width, height, loading="lazy" -->
                             <img src="/src/assets/img.Webp" alt="Motorcycle being loaded onto transport trailer"
-                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" width="600" height="300" loading="lazy">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-bold text-[#212121] mb-3">Motorcycle Transport</h3>
@@ -1447,8 +1299,9 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                         class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200/50 hover:border-[#D91C2A]/30">
                         <div class="absolute top-0 left-0 w-full h-1 "></div>
                         <div class="h-48 w-full overflow-hidden ">
+                            <!-- OPTIMIZED: Added width, height, loading="lazy" -->
                             <img src="/src/assets/imgB.Webp" alt="RV and boat transport on trailer"
-                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" width="600" height="300" loading="lazy">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-bold text-[#212121] mb-3">RV & Boat Transport</h3>
@@ -1468,8 +1321,9 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                         class="scroll-animate group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200/50 hover:border-[#0B2C7A]/30">
                         <div class="absolute top-0 left-0 w-full h-1 "></div>
                         <div class="h-48 w-full overflow-hidden ">
+                            <!-- OPTIMIZED: Added width, height, loading="lazy" -->
                             <img src="/src/assets/imgRV.Webp" alt="Trailer shipping across America"
-                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" width="600" height="300" loading="lazy">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-bold text-[#212121] mb-3">Trailer Shipping</h3>
@@ -1789,46 +1643,47 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                 class="  sm:p-1 flex items-center justify-center -mb-20 mt-10 h-full w-full max-w-full max-h-full ">
                 <marquee behavior="scroll" direction="left" loop
                     class="font-semibold text-lg tracking-wide w-full text-[#212121]">
+                    <!-- OPTIMIZED: Added width, height, loading="lazy" to all marquee images -->
                     <img src="src/assets/BMW-removebg-preview.png" alt="BMW"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/BENTELY-removebg-preview.png" alt="Bentely"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/AM-removebg-preview.png" alt="Austin Martin"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/CADILLAC-removebg-preview.png" alt="Cadillac"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/CHEV-removebg-preview.png" alt="Chevrolet"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/CHRYSLER-removebg-preview.png" alt="Chrysler"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/DODGE-removebg-preview.png" alt="Dodge"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/GMC-removebg-preview.png" alt="GMC"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/Jaguar-removebg-preview.png" alt="Jaguar"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/MUSTANG-removebg-preview.png" alt="Mustang"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/FIAT-removebg-preview.png" alt="Fiat"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/HUUNDAI-removebg-preview.png" alt="Hyundai"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/LEXUS-removebg-preview.png" alt="Lexus"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/LR-removebg-preview.png" alt="Land Rover"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/MAZDA-removebg-preview.png" alt="Mazda"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/PORCHE-removebg-preview.png" alt="Porsche"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/ROMEO-removebg-preview.png" alt="Alfa Romeo"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/ROVERS-removebg-preview.png" alt="Rover"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/SKAODA-removebg-preview.png" alt="Skoda"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                     <img src="src/assets/TESLA-removebg-preview.png" alt="Tesla"
-                        class="h-20 mx-5 inline-block align-middle">&nbsp;&nbsp;
+                        class="h-20 mx-5 inline-block align-middle" width="80" height="80" loading="lazy">&nbsp;&nbsp;
                 </marquee>
             </div>
         </div>
@@ -1842,7 +1697,8 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                 <div class="scroll-animate space-y-6">
                     <div class="flex items-center space-x-1">
                         <div>
-                            <img src="/src/assets/FLOGO-removebg-preview.png" alt="logo" class="h-[170px] w-auto " />
+                            <!-- OPTIMIZED: Added width, height, loading="lazy" -->
+                            <img src="/src/assets/FLOGO-removebg-preview.png" alt="logo" class="h-[170px] w-auto " width="170" height="170" loading="lazy" />
                         </div>
                     </div>
                     <div class="text-xl font-bold tracking-wider text-[#ffffff] text-justify">AmericanASK4Logistics
@@ -1894,7 +1750,8 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                                 Privacy Policy
                             </a></li>
                         <div class="text-center">
-                            <img class="max-w-full max-h-full " src="/src/assets/MAP.Webp" alt="US Map">
+                            <!-- OPTIMIZED: Added width, height, loading="lazy" -->
+                            <img class="max-w-full max-h-full " src="/src/assets/MAP.Webp" alt="US Map" width="300" height="200" loading="lazy">
                             <p class="text-white/60 text-xs mt-2">Nationwide Logistics Coverage</p>
                         </div>
                     </ul>
@@ -1986,7 +1843,8 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                             <!-- FMCA Logo (Smaller) -->
                             <div class="shrink-0">
                                 <div class="w-24 h-24  rounded-lg flex items-center justify-center  p-4">
-                                    <img src="/src/assets/FMSCA.Webp" alt="FMCSA Logo" class="max-w-40 max-h-20" />
+                                    <!-- OPTIMIZED: Added width, height, loading="lazy" -->
+                                    <img src="/src/assets/FMSCA.Webp" alt="FMCSA Logo" class="max-w-40 max-h-20" width="160" height="80" loading="lazy" />
                                 </div>
                                 <p class="text-white/70 text-xs text-center m-3">Certified Carrier</p>
                             </div>

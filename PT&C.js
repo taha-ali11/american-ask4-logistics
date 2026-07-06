@@ -60,7 +60,7 @@ class PrivacyTermsPage {
 
     handleTermsAcceptance() {
         // Update button appearance
-        this.acceptTermsButton.innerHTML = '<i class="fas fa-check mr-2"></i>Terms Acknowledged';
+        this.acceptTermsButton.innerHTML = '<i class="fas fa-check mr-2" aria-hidden="true"></i>Terms Acknowledged';
         this.acceptTermsButton.classList.remove('from-[#3C3B6E]', 'to-[#0A2342]');
         this.acceptTermsButton.classList.add('from-green-600', 'to-green-800');
         this.acceptTermsButton.disabled = true;
@@ -75,9 +75,11 @@ class PrivacyTermsPage {
     showConfirmationMessage() {
         const confirmation = document.createElement('div');
         confirmation.className = 'fixed top-4 right-4 bg-green-600 text-white p-4 rounded-lg shadow-lg z-50 max-w-sm animate-fade-in';
+        confirmation.setAttribute('role', 'status');
+        confirmation.setAttribute('aria-live', 'polite');
         confirmation.innerHTML = `
             <div class="flex items-center">
-                <i class="fas fa-check-circle text-xl mr-3"></i>
+                <i class="fas fa-check-circle text-xl mr-3" aria-hidden="true"></i>
                 <div>
                     <p class="font-bold">Thank you!</p>
                     <p class="text-sm">Your acknowledgment has been noted.</p>
@@ -166,7 +168,7 @@ class PrivacyTermsPage {
     createPrintButton() {
         this.printButton = document.createElement('button');
         this.printButton.className = 'fixed bottom-32 right-6 bg-white text-gray-800 font-medium py-2 px-4 rounded-lg shadow-lg flex items-center hover:bg-gray-100 transition-colors z-40 print:hidden';
-        this.printButton.innerHTML = '<i class="fas fa-print mr-2"></i> Print Terms';
+        this.printButton.innerHTML = '<i class="fas fa-print mr-2" aria-hidden="true"></i> Print Terms';
         this.printButton.setAttribute('aria-label', 'Print this page');
         this.printButton.addEventListener('click', () => this.printPage());
         document.body.appendChild(this.printButton);
@@ -273,7 +275,7 @@ class PrivacyTermsPage {
             const acknowledged = localStorage.getItem('termsAcknowledged');
             if (acknowledged && this.acceptTermsButton) {
                 // User already acknowledged terms
-                this.acceptTermsButton.innerHTML = '<i class="fas fa-check mr-2"></i>Previously Acknowledged';
+                this.acceptTermsButton.innerHTML = '<i class="fas fa-check mr-2" aria-hidden="true"></i>Previously Acknowledged';
                 this.acceptTermsButton.classList.remove('from-[#3C3B6E]', 'to-[#0A2342]');
                 this.acceptTermsButton.classList.add('from-gray-600', 'to-gray-800');
                 this.acceptTermsButton.disabled = true;

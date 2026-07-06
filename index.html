@@ -77,35 +77,44 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
 
         /* Define different background images for different animation delays */
         /* Update all animation delays to be staggered */
-
         .slideshow-background:nth-child(1) {
-            background-image: url('/src/assets/1stimg.Webp');
+            background-image: url('/src/assets/Truck.Webp');
             animation-delay: 0s;
         }
 
         .slideshow-background:nth-child(2) {
-            background-image: url('/src/assets/Tunnel.Webp');
+            background-image: url('/src/assets/1stimg.Webp');
             animation-delay: 3.5s;
         }
 
         .slideshow-background:nth-child(3) {
-            background-image: url('/src/assets/ing.Webp');
-            animation-delay: 6s;
+            background-image: url('/src/assets/Tunnel.Webp');
+            animation-delay: 7.5s;
         }
 
         .slideshow-background:nth-child(4) {
-            background-image: url('/src/assets/imgRV.Webp');
-            animation-delay: 9.5s;
+            background-image: url('/src/assets/ing.Webp');
+            animation-delay: 10s;
         }
 
         .slideshow-background:nth-child(5) {
-            background-image: url('/src/assets/imgB.Webp');
-            animation-delay: 13.5s;
+            background-image: url('/src/assets/imgRV.Webp');
+            animation-delay: 14.5s;
         }
 
         .slideshow-background:nth-child(6) {
+            background-image: url('/src/assets/imgLC.Webp');
+            animation-delay: 18s;
+        }
+
+        .slideshow-background:nth-child(7) {
+            background-image: url('/src/assets/imgB.Webp');
+            animation-delay: 22.5s;
+        }
+
+        .slideshow-background:nth-child(8) {
             background-image: url('/src/assets/img.Webp');
-            animation-delay: 15s;
+            animation-delay: 25s;
         }
 
         /* Keyframe animation for smooth fade */
@@ -142,66 +151,70 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
         /* Small phones (iPhone SE, Galaxy Fold) */
         @media (max-width: 375px) {
             .slideshow-background:nth-child(1) {
-                background-image: url('/src/assets/1stimg.Webp');
-                animation-delay: 0s;
+                background-image: url('/src/assets/MSD.Webp');
             }
 
             .slideshow-background:nth-child(2) {
-                background-image: url('/src/assets/Tunnel.Webp');
-                animation-delay: 3.5s;
+                background-image: url('/src/assets/MS.Webp');
             }
 
             .slideshow-background:nth-child(3) {
-                background-image: url('/src/assets/ing.Webp');
-                animation-delay: 6s;
+                background-image: url('/src/assets/MobileS.Webp');
             }
 
             .slideshow-background:nth-child(4) {
-                background-image: url('/src/assets/imgRV.Webp');
-                animation-delay: 9.5s;
+                background-image: url('/src/assets/MobileBike.Webp');
             }
 
             .slideshow-background:nth-child(5) {
-                background-image: url('/src/assets/imgB.Webp');
-                animation-delay: 13.5s;
+                background-image: url('/src/assets/MSB.Webp');
             }
 
             .slideshow-background:nth-child(6) {
-                background-image: url('/src/assets/img.Webp');
-                animation-delay: 15s;
+                background-image: url('/src/assets/MSD.Webp');
+            }
+
+            .slideshow-background:nth-child(7) {
+                background-image: url('/src/assets/MST.Webp');
+            }
+
+            .slideshow-background:nth-child(8) {
+                background-image: url('/src/assets/MSC.Webp');
             }
         }
 
         /* Most smartphones (iPhone, Android) */
         @media (max-width: 480px) {
             .slideshow-background:nth-child(1) {
-                background-image: url('/src/assets/1stimg.Webp');
-                animation-delay: 0s;
+                background-image: url('/src/assets/MSD.Webp');
             }
 
             .slideshow-background:nth-child(2) {
-                background-image: url('/src/assets/Tunnel.Webp');
-                animation-delay: 3.5s;
+                background-image: url('/src/assets/MS.Webp');
             }
 
             .slideshow-background:nth-child(3) {
-                background-image: url('/src/assets/ing.Webp');
-                animation-delay: 6s;
+                background-image: url('/src/assets/MobileS.Webp');
             }
 
             .slideshow-background:nth-child(4) {
-                background-image: url('/src/assets/imgRV.Webp');
-                animation-delay: 9.5s;
+                background-image: url('/src/assets/MobileBike.Webp');
             }
 
             .slideshow-background:nth-child(5) {
-                background-image: url('/src/assets/imgB.Webp');
-                animation-delay: 13.5s;
+                background-image: url('/src/assets/MSB.Webp');
             }
 
             .slideshow-background:nth-child(6) {
-                background-image: url('/src/assets/img.Webp');
-                animation-delay: 15s;
+                background-image: url('/src/assets/MSD.Webp');
+            }
+
+            .slideshow-background:nth-child(7) {
+                background-image: url('/src/assets/MST.Webp');
+            }
+
+            .slideshow-background:nth-child(8) {
+                background-image: url('/src/assets/MSC.Webp');
             }
         }
 
@@ -567,6 +580,8 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
     <section id="home-section" class="text-white p-4 sm:p-8 flex items-center justify-center min-h-screen">
         <!-- Background container -->
         <div class="absolute inset-0 overflow-hidden">
+            <div class="slideshow-background"></div>
+            <div class="slideshow-background"></div>
             <div class="slideshow-background"></div>
             <div class="slideshow-background"></div>
             <div class="slideshow-background"></div>
@@ -2005,7 +2020,7 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
 
                             </div>
                             <div class="scroll-animate">
-                                <p class="text-white/90 font-medium">Georgia Office</p>
+                                <p class="text-white/90 font-medium">Georgiga Office</p>
                                 <p class="text-white/70">3523 DEWS POND RD SE,<br>CALHOUN, GA 30701</p>
                             </div>
                         </div>
@@ -2017,7 +2032,8 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                             </div>
                             <div>
                                 <p class="scroll-animate text-white/90 font-medium">New Jersey Office</p>
-                                <p class="scroll-animate text-white/70">96 CLINTON AVE<br>NEWARK, NEW JERSEY 07114</p>
+                                <p class="scroll-animate text-white/70">96 CLINTON AVE
+                                    NEWARK,<br>NEW JERSEY 07114</p>
                             </div>
                         </div>
                         <div class="flex items-center space-x-3">
@@ -2107,7 +2123,7 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
             <div class="mt-16 pt-8 border-t border-white/20 flex flex-col md:flex-row justify-between items-center">
                 <div class="text-center md:text-left mb-4 md:mb-0">
                     <p class="text-white/70 text-sm">
-                        &copy; Copyright American ASK4 Logistics 2026. All rights reserved.
+                        &copy; Copyright American ASK4 Logistics 2025. All rights reserved.
                     </p>
                 </div>
                 <div class="flex flex-col items-center md:items-end">

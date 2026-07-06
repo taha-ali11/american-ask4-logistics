@@ -156,7 +156,7 @@
         <div class="container mx-auto flex items-center justify-between h-20 px-5 relative z-10">
             <a href="/index.html" class="flex items-center">
                 <img src="/src/assets/NLAFL-removebg-preview.png" alt="American Ask4 Logistics Logo"
-                    class="h-[120px] w-auto mt-2 object-contain" />
+                    class="h-[120px] w-auto mt-2 object-contain" decoding="async" />
             </a>
             <nav class="flex space-x-6">
                 <a href="index.html" class="text-[#212121] hover:text-[#D91C2A] font-medium transition-colors">
@@ -469,7 +469,7 @@
                         <div class="text-center">
                             <button id="acceptTerms"
                                 class="bg-[#0B2C7A] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#082056] transition-all duration-300 transform hover:scale-105 shadow-lg">
-                                <i class="fas fa-check-circle mr-2"></i>Acknowledge Terms
+                                <i class="fas fa-check-circle mr-2" aria-hidden="true"></i>Acknowledge Terms
                             </button>
                             <p class="text-sm text-gray-600 mt-3">This button is for acknowledgment purposes only</p>
                         </div>
@@ -503,8 +503,8 @@
                             <i class="fas fa-envelope text-2xl"></i>
                         </div>
                         <h4 class="text-xl font-bold mb-2">Email Us</h4>
-                        <a href="mailto:legal@americanask4logistics.com">
-                            <p class="opacity-100 hover:text-[#FFD54F]">legal@americanask4logistics.com</p>
+                        <a href="mailto:info@americanask4logistics.us">
+                            <p class="opacity-100 hover:text-[#FFD54F]">info@americanask4logistics.us</p>
                         </a>
                         <p class="text-sm opacity-80 mt-2">Response within 24 hours</p>
                     </div>
@@ -530,7 +530,8 @@
                 <div>
                     <div class="flex items-center space-x-10">
                         <div>
-                            <img src="/src/assets/FLOGO-removebg-preview.png" alt="logo" class="h-[170px] w-auto " />
+                            <img src="/src/assets/FLOGO-removebg-preview.png" alt="logo" class="h-[170px] w-auto "
+                                loading="lazy" decoding="async" />
                         </div>
                     </div>
                     <h4 class="text-xl font-bold mb-4 text-white">American Ask4 Logistics</h4>
@@ -597,8 +598,8 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" title="none" id="backToTop">
-        <i class="fas fa-chevron-up"></i>
+    <a href="#" class="back-to-top" title="Back to top" aria-label="Back to top" id="backToTop">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
     </a>
 
     <script src="PT&C.js" defer></script>

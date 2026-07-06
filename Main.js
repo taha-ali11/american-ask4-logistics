@@ -1,5 +1,3 @@
-
-
 // =============================================
 // SCROLL TRIGGER ANIMATIONS MODULE
 // =============================================
@@ -9,16 +7,18 @@ class ScrollTriggerAnimator {
         this.observer = null;
         this.isInitialized = false;
         this.scrollHandler = null;
+        this.prefersReducedMotion = typeof window.matchMedia === 'function' &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     }
 
     init() {
         // Prevent multiple initializations
         if (this.isInitialized) return;
         this.isInitialized = true;
-        
+
         // Setup Intersection Observer
         this.setupObserver();
-        
+
         // Animate elements already in view
         setTimeout(() => this.animateVisibleElements(), 300);
     }
@@ -65,13 +65,13 @@ class ScrollTriggerAnimator {
     animateVisibleElements() {
         const elements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right');
         const viewportHeight = window.innerHeight;
-        
+
         elements.forEach(element => {
             if (this.animatedElements.has(element)) return;
-            
+
             const rect = element.getBoundingClientRect();
             const isInView = rect.top <= viewportHeight * 0.9 && rect.bottom >= 0;
-            
+
             const isInHomeSection = element.closest('#home-section');
             if (isInView || isInHomeSection) {
                 this.animateElement(element);
@@ -81,9 +81,14 @@ class ScrollTriggerAnimator {
 
     animateElement(element) {
         if (!element || this.animatedElements.has(element)) return;
-        
+
         this.animatedElements.add(element);
-        
+
+        if (this.prefersReducedMotion) {
+            element.classList.add('animated');
+            return;
+        }
+
         // Add a small delay for smoother feel
         setTimeout(() => {
             element.classList.add('animated');
@@ -94,19 +99,19 @@ class ScrollTriggerAnimator {
         const checkElements = () => {
             const elements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right');
             const viewportHeight = window.innerHeight;
-            
+
             elements.forEach(element => {
                 if (this.animatedElements.has(element)) return;
-                
+
                 const rect = element.getBoundingClientRect();
                 const isInView = rect.top <= viewportHeight * 0.8 && rect.bottom >= 0;
-                
+
                 if (isInView) {
                     this.animateElement(element);
                 }
             });
         };
-        
+
         // Use throttled scroll handler for performance
         let ticking = false;
         this.scrollHandler = () => {
@@ -118,7 +123,7 @@ class ScrollTriggerAnimator {
                 ticking = true;
             }
         };
-        
+
         window.addEventListener('scroll', this.scrollHandler);
         // Initial check
         setTimeout(checkElements, 100);
@@ -130,12 +135,12 @@ class ScrollTriggerAnimator {
             this.observer.disconnect();
             this.observer = null;
         }
-        
+
         if (this.scrollHandler) {
             window.removeEventListener('scroll', this.scrollHandler);
             this.scrollHandler = null;
         }
-        
+
         this.animatedElements.clear();
         this.isInitialized = false;
     }
@@ -143,16 +148,16 @@ class ScrollTriggerAnimator {
     // Refresh for dynamically added content
     refresh() {
         if (!this.isInitialized) return;
-        
+
         // Clean up old observer
         if (this.observer) {
             this.observer.disconnect();
             this.observer = null;
         }
-        
+
         // Clear animated elements set
         this.animatedElements.clear();
-        
+
         // Re-initialize
         this.setupObserver();
         setTimeout(() => this.animateVisibleElements(), 100);
@@ -170,7 +175,7 @@ function initScrollAnimations() {
     if (scrollAnimatorInstance) {
         scrollAnimatorInstance.destroy();
     }
-    
+
     scrollAnimatorInstance = new ScrollTriggerAnimator();
     scrollAnimatorInstance.init();
     return scrollAnimatorInstance;
@@ -179,7 +184,7 @@ function initScrollAnimations() {
 // Initialize when DOM is ready
 function setupScrollAnimations() {
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             setTimeout(initScrollAnimations, 100);
         });
     } else {
@@ -191,7 +196,7 @@ function setupScrollAnimations() {
 setupScrollAnimations();
 
 // Also re-initialize on window load for any dynamic content
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     setTimeout(() => {
         if (scrollAnimatorInstance) {
             scrollAnimatorInstance.refresh();
@@ -202,7 +207,7 @@ window.addEventListener('load', function() {
 });
 
 // Handle page transitions (for SPAs)
-document.addEventListener('visibilitychange', function() {
+document.addEventListener('visibilitychange', function () {
     if (!document.hidden && scrollAnimatorInstance) {
         setTimeout(() => scrollAnimatorInstance.refresh(), 100);
     }

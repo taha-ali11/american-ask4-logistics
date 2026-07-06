@@ -81,6 +81,29 @@
             transform: translateY(-3px);
         }
 
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            z-index: 10000;
+            background: #0B2C7A;
+            color: #fff;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0 0 6px 0;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            left: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+
         .legal-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-left: 4px solid #0B2C7A;
@@ -127,6 +150,7 @@
 </head>
 
 <body class="text-[#212121] bg-[#F8F9FA]">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Navigation Header -->
     <header class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto flex items-center justify-between h-20 px-5 relative z-10">
@@ -163,7 +187,7 @@
     </section>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-12">
+    <main id="main-content" class="container mx-auto px-4 py-12">
         <!-- Privacy Policy Section -->
         <section id="privacy" class="mb-16 scroll-mt-20">
             <div class="bg-white rounded-xl shadow-lg overflow-hidden legal-card">
@@ -544,21 +568,21 @@
                 <div>
                     <h5 class="font-bold mb-4 text-white">Connect With Us</h5>
                     <div class="flex space-x-4">
-                        <a href="#" title="none"
+                        <a href="#" title="Facebook" aria-label="Facebook"
                             class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#D91C2A] transition-colors">
-                            <i class="fab fa-facebook-f"></i>
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
                         </a>
-                        <a href="#" title="none"
+                        <a href="#" title="X" aria-label="X (formerly Twitter)"
                             class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#D91C2A] transition-colors">
-                            <i class="fab fa-twitter"></i>
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
                         </a>
-                        <a href="#" title="none"
+                        <a href="#" title="LinkedIn" aria-label="LinkedIn"
                             class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#D91C2A] transition-colors">
-                            <i class="fab fa-linkedin-in"></i>
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
                         </a>
-                        <a href="#" title="none"
+                        <a href="#" title="Instagram" aria-label="Instagram"
                             class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#D91C2A] transition-colors">
-                            <i class="fab fa-instagram"></i>
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
                         </a>
                     </div>
                     <p class="text-white/80 mt-6">© 2025 American Ask4 Logistics. All rights reserved.</p>

@@ -84,7 +84,7 @@ class PrivacyTermsPage {
                 </div>
             </div>
         `;
-        
+
         // Add animation styles
         const style = document.createElement('style');
         style.textContent = `
@@ -97,7 +97,7 @@ class PrivacyTermsPage {
             }
         `;
         document.head.appendChild(style);
-        
+
         document.body.appendChild(confirmation);
 
         // Remove confirmation after 5 seconds
@@ -300,7 +300,7 @@ class PrivacyTermsPage {
 
     throttle(func, limit) {
         let inThrottle;
-        return function(...args) {
+        return function (...args) {
             if (!inThrottle) {
                 func.apply(this, args);
                 inThrottle = true;
@@ -316,7 +316,7 @@ class PrivacyTermsPage {
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize the page functionality
     window.privacyTermsPage = new PrivacyTermsPage();
-    
+
     // Optional: Add loading state management
     window.addEventListener('load', () => {
         document.body.classList.add('page-loaded');

@@ -10,6 +10,7 @@ class ShippingApplication {
         this.overlay = null;
         this.toastContainer = null;
         this.db = null;
+        this.firestoreSDK = null;
         this.analytics = null;
         this.isFirebaseInitialized = false;
         
@@ -49,8 +50,9 @@ class ShippingApplication {
     // =============================================
     async initializeFirebase() {
         try {
-            // Check if Firebase SDK is loaded
-            if (typeof firebase === 'undefined') {
+            // Check if the Firebase modular SDK has loaded
+            const sdk = window.firebaseSDK;
+            if (!sdk) {
                 // console.warn("Firebase SDK not loaded");
                 return;
             }
@@ -69,36 +71,41 @@ class ShippingApplication {
             // Initialize Firebase App
             let app;
             try {
-                if (firebase.apps.length === 0) {
-                    app = firebase.initializeApp(firebaseConfig);
-                } else {
-                    app = firebase.app();
-                }
+                app = sdk.getApps().length === 0 ? sdk.initializeApp(firebaseConfig) : sdk.getApp();
             } catch (error) {
-                app = firebase.app();
+                app = sdk.getApp();
             }
             
             // Initialize Firestore
-            if (typeof firebase.firestore === 'function') {
-                this.db = firebase.firestore();
-                
+            try {
+                this.db = sdk.getFirestore(app);
+                this.firestoreSDK = sdk;
+
                 // Test Firestore with a simple operation
                 try {
-                    await this.db.collection('connection_test').doc('test').set({
+                    const testDocRef = sdk.doc(this.db, 'connection_test', 'test');
+                    await sdk.setDoc(testDocRef, {
                         test: true,
-                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                        timestamp: sdk.serverTimestamp()
                     }, { merge: true });
                     // console.log("Firestore connection test successful");
                 } catch (testError) {
                     console.warn("Firestore test failed:", testError.message);
                 }
-            } else {
+            } catch (firestoreError) {
                 throw new Error("Firestore not available");
             }
             
             // Initialize Analytics
-            if (typeof firebase.analytics === 'function') {
-                this.analytics = firebase.analytics();
+            if (typeof sdk.getAnalytics === 'function') {
+                try {
+                    const analyticsSupported = typeof sdk.isSupported === 'function' ? await sdk.isSupported() : true;
+                    if (analyticsSupported) {
+                        this.analytics = sdk.getAnalytics(app);
+                    }
+                } catch (analyticsError) {
+                    // Analytics unsupported in this environment - non-fatal
+                }
             }
             
             this.isFirebaseInitialized = true;
@@ -231,17 +238,20 @@ class ShippingApplication {
         
         // Add required metadata for Firestore rules
         dataObject.userId = "anonymous_user"; // Required by rules
-        dataObject.createdAt = firebase.firestore.FieldValue.serverTimestamp(); // Must be Firestore Timestamp
+        dataObject.createdAt = (this.firestoreSDK && typeof this.firestoreSDK.serverTimestamp === 'function')
+            ? this.firestoreSDK.serverTimestamp() // Must be Firestore Timestamp
+            : new Date().toISOString(); // Safe fallback if Firebase never loaded
         dataObject.submittedAt = new Date().toISOString();
         
         // console.log("Final data to save:", dataObject);
         
         try {
-            if (this.isFirebaseInitialized && this.db) {
+            if (this.isFirebaseInitialized && this.db && this.firestoreSDK) {
                 // console.log("Attempting to save to Firestore...");
                 
                 // Save to Firestore
-                const docRef = await this.db.collection("shipping_quotes").add(dataObject);
+                const quotesRef = this.firestoreSDK.collection(this.db, "shipping_quotes");
+                const docRef = await this.firestoreSDK.addDoc(quotesRef, dataObject);
                 // console.log("Document written with ID: ", docRef.id);
                 
                 this.showToast("Thanks for trusting us! Our team will contact you shortly.", "success");

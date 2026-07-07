@@ -22,7 +22,6 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
     <link rel="icon" type="image/png" href="/src/assets/NLAFL-removebg-preview.png">
     <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preconnect" href="https://cdn-uicons.flaticon.com" crossorigin>
     <link rel="preload" as="image" href="/src/assets/Truck.Webp" media="(min-width: 481px)">
     <link rel="preload" as="image" href="/src/assets/MSD.Webp" media="(max-width: 480px)">
     <style id="tw-compiled">
@@ -2295,18 +2294,6 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
 
     <script src="App.js" defer></script>
     <script src="Main.js" defer></script>
-    <link rel='stylesheet'
-        href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-chubby/css/uicons-regular-chubby.css' media="print"
-        onload="this.media='all'">
-    <link rel='stylesheet'
-        href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css' media="print"
-        onload="this.media='all'">
-    <noscript>
-        <link rel='stylesheet'
-            href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-chubby/css/uicons-regular-chubby.css'>
-        <link rel='stylesheet'
-            href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    </noscript>
     <style>
         :root {
             --primary-blue: #0B2C7A;
@@ -2351,23 +2338,36 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
 
         /* Define different background images for different animation delays */
         /* Update all animation delays to be staggered */
+        /* Only the first (immediately visible) slide loads eagerly - it's the LCP
+           element. Slides 2-4 are scoped under .slideshow-loaded, a class added by
+           JS only after window 'load', so they don't compete for bandwidth with
+           critical above-the-fold resources during initial page load. */
         .slideshow-background:nth-child(1) {
             background-image: url('/src/assets/Truck.Webp');
             animation-delay: 0s;
         }
 
-        .slideshow-background:nth-child(2) {
+        #home-section.slideshow-loaded .slideshow-background:nth-child(2) {
             background-image: url('/src/assets/1stimg.Webp');
+        }
+
+        .slideshow-background:nth-child(2) {
             animation-delay: 7.5s;
         }
 
-        .slideshow-background:nth-child(3) {
+        #home-section.slideshow-loaded .slideshow-background:nth-child(3) {
             background-image: url('/src/assets/Tunnel.Webp');
+        }
+
+        .slideshow-background:nth-child(3) {
             animation-delay: 15s;
         }
 
-        .slideshow-background:nth-child(4) {
+        #home-section.slideshow-loaded .slideshow-background:nth-child(4) {
             background-image: url('/src/assets/ing.Webp');
+        }
+
+        .slideshow-background:nth-child(4) {
             animation-delay: 22.5s;
         }
 
@@ -2408,15 +2408,15 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                 background-image: url('/src/assets/MSD.Webp');
             }
 
-            .slideshow-background:nth-child(2) {
+            #home-section.slideshow-loaded .slideshow-background:nth-child(2) {
                 background-image: url('/src/assets/MS.Webp');
             }
 
-            .slideshow-background:nth-child(3) {
+            #home-section.slideshow-loaded .slideshow-background:nth-child(3) {
                 background-image: url('/src/assets/MobileS.Webp');
             }
 
-            .slideshow-background:nth-child(4) {
+            #home-section.slideshow-loaded .slideshow-background:nth-child(4) {
                 background-image: url('/src/assets/MobileBike.Webp');
             }
         }
@@ -2427,15 +2427,15 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                 background-image: url('/src/assets/MSD.Webp');
             }
 
-            .slideshow-background:nth-child(2) {
+            #home-section.slideshow-loaded .slideshow-background:nth-child(2) {
                 background-image: url('/src/assets/MS.Webp');
             }
 
-            .slideshow-background:nth-child(3) {
+            #home-section.slideshow-loaded .slideshow-background:nth-child(3) {
                 background-image: url('/src/assets/MobileS.Webp');
             }
 
-            .slideshow-background:nth-child(4) {
+            #home-section.slideshow-loaded .slideshow-background:nth-child(4) {
                 background-image: url('/src/assets/MobileBike.Webp');
             }
         }
@@ -2729,10 +2729,10 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                     Policy</a>
                 <a href="tel:+12096440006" title="Call"
                     class="mr-6 hover:text-[#D91C2A] cursor-pointer transition duration-300 font-medium text-[#212121] text-base lg:text-lg xl:text-xl 2xl:text-2xl">
-                    <i class="fi fi-rc-phone-call"></i>Free Consultation</a>
+                    <i class="fas fa-phone"></i>Free Consultation</a>
                 <a href="mailto:info@americanask4logistics.us" title="Email"
                     class="mr-6 hover:text-[#D91C2A] cursor-pointer transition duration-300 font-medium text-[#212121] text-base lg:text-lg xl:text-xl 2xl:text-2xl">
-                    <i class="fi fi-rr-envelopes"></i>Email for Estimate</a>
+                    <i class="fas fa-envelope"></i>Email for Estimate</a>
 
             </nav>
 
@@ -2769,13 +2769,13 @@ auto transport company USA, car shipping services, vehicle transport logistics, 
                     Policy</a>
                 <a href="tel:+12096440006" title="Call"
                     class="text-white hover:text-[#D91C2A] cursor-pointer py-2 px-3 hover:bg-white/10 rounded transition duration-300 text-lg font-medium flex items-center">
-                    <i class="fi fi-rc-phone-call mr-3 text-[#D91C2A]"></i>
+                    <i class="fas fa-phone mr-3 text-[#D91C2A]"></i>
                     Free Consultation
                 </a>
 
                 <a href="mailto:info@americanask4logistics.us" title="Email"
                     class="text-white hover:text-[#D91C2A] cursor-pointer py-2 px-3 hover:bg-white/10 rounded transition duration-300 text-lg font-medium flex items-center">
-                    <i class="fi fi-rr-envelopes mr-3 text-[#D91C2A]"></i>
+                    <i class="fas fa-envelope mr-3 text-[#D91C2A]"></i>
                     Email for Estimate
                 </a>
             </nav>

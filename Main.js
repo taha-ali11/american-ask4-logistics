@@ -1,4 +1,25 @@
 // =============================================
+// DEFERRED HERO SLIDESHOW IMAGES
+// =============================================
+// Slides 2-4 of the hero background slideshow don't have their background-image
+// set until this class is added, so they don't compete for bandwidth with the
+// critical first paint / LCP image. Slide 1 loads immediately and eagerly.
+function revealSlideshowImages() {
+    const homeSection = document.getElementById('home-section');
+    if (homeSection) {
+        homeSection.classList.add('slideshow-loaded');
+    }
+}
+
+if (document.readyState === 'complete') {
+    revealSlideshowImages();
+} else {
+    window.addEventListener('load', revealSlideshowImages);
+}
+// Fallback in case window 'load' is held up by something unrelated (e.g. analytics)
+setTimeout(revealSlideshowImages, 3000);
+
+// =============================================
 // SCROLL TRIGGER ANIMATIONS MODULE
 // =============================================
 class ScrollTriggerAnimator {

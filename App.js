@@ -13,7 +13,7 @@ class ShippingApplication {
         this.firestoreSDK = null;
         this.analytics = null;
         this.isFirebaseInitialized = false;
-        
+
         this.initializeApp();
     }
 
@@ -38,7 +38,7 @@ class ShippingApplication {
         this.initializeMobileNavigation();
         this.initializePhoneFormatter();
         this.initializeCounters();
-        
+
         // Initialize Firebase with delay to ensure SDKs are loaded
         setTimeout(() => {
             this.initializeFirebase();
@@ -56,7 +56,7 @@ class ShippingApplication {
                 // console.warn("Firebase SDK not loaded");
                 return;
             }
-            
+
             // Firebase configuration
             const firebaseConfig = {
                 apiKey: "AIzaSyBIgohlEDVWwcrnmgdVEMf3b6IFcoa1Z0g",
@@ -67,7 +67,7 @@ class ShippingApplication {
                 appId: "1:817536629954:web:6f84668c8e086789368f5b",
                 measurementId: "G-HHLJ2610FE"
             };
-            
+
             // Initialize Firebase App
             let app;
             try {
@@ -75,7 +75,7 @@ class ShippingApplication {
             } catch (error) {
                 app = sdk.getApp();
             }
-            
+
             // Initialize Firestore
             try {
                 this.db = sdk.getFirestore(app);
@@ -95,7 +95,7 @@ class ShippingApplication {
             } catch (firestoreError) {
                 throw new Error("Firestore not available");
             }
-            
+
             // Initialize Analytics
             if (typeof sdk.getAnalytics === 'function') {
                 try {
@@ -107,14 +107,14 @@ class ShippingApplication {
                     // Analytics unsupported in this environment - non-fatal
                 }
             }
-            
+
             this.isFirebaseInitialized = true;
             // console.log("Firebase initialized successfully");
 
         } catch (error) {
             console.error("Firebase initialization error:", error);
             this.isFirebaseInitialized = false;
-            
+
             setTimeout(() => {
                 this.showToast("Working in offline mode", "error");
             }, 500);
@@ -133,7 +133,7 @@ class ShippingApplication {
             this.toastContainer.setAttribute('role', 'status');
             this.toastContainer.setAttribute('aria-live', 'polite');
             document.body.appendChild(this.toastContainer);
-            
+
             this.toastContainer.style.cssText = `
                 position: fixed;
                 top: 5rem;
@@ -151,11 +151,11 @@ class ShippingApplication {
 
     showToast(message, type = 'success') {
         if (!this.toastContainer) return;
-        
+
         const toast = document.createElement('div');
         const bgColor = type === 'success' ? 'bg-green-600' : 'bg-red-600';
         const textColor = 'text-white';
-        
+
         toast.className = `${bgColor} ${textColor} px-4 py-3 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out opacity-0 translate-x-full mb-2`;
         toast.style.cssText = `
             pointer-events: auto;
@@ -164,15 +164,15 @@ class ShippingApplication {
             max-width: 24rem;
             min-width: 20rem;
         `;
-        
+
         toast.innerHTML = `
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <svg class="w-5 h-5 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        ${type === 'success' ? 
-                            '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>' :
-                            '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>'
-                        }
+                        ${type === 'success' ?
+                '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>' :
+                '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>'
+            }
                     </svg>
                     <span class="font-medium text-sm">${this.escapeHtml(message)}</span>
                 </div>
@@ -183,18 +183,18 @@ class ShippingApplication {
                 </button>
             </div>
         `;
-        
+
         this.toastContainer.appendChild(toast);
-        
+
         requestAnimationFrame(() => {
             toast.classList.remove('opacity-0', 'translate-x-full');
         });
-        
+
         const closeButton = toast.querySelector('button');
         closeButton.addEventListener('click', () => {
             this.removeToast(toast);
         });
-        
+
         setTimeout(() => {
             if (toast.parentElement) {
                 this.removeToast(toast);
@@ -228,54 +228,54 @@ class ShippingApplication {
         const form = event.target;
         const formData = new FormData(form);
         const dataObject = {};
-        
+
         // Collect form data
         formData.forEach((value, key) => {
             dataObject[key] = value;
         });
-        
+
         // console.log("Form data collected:", dataObject);
-        
+
         // Add required metadata for Firestore rules
         dataObject.userId = "anonymous_user"; // Required by rules
         dataObject.createdAt = (this.firestoreSDK && typeof this.firestoreSDK.serverTimestamp === 'function')
             ? this.firestoreSDK.serverTimestamp() // Must be Firestore Timestamp
             : new Date().toISOString(); // Safe fallback if Firebase never loaded
         dataObject.submittedAt = new Date().toISOString();
-        
+
         // console.log("Final data to save:", dataObject);
-        
+
         try {
             if (this.isFirebaseInitialized && this.db && this.firestoreSDK) {
                 // console.log("Attempting to save to Firestore...");
-                
+
                 // Save to Firestore
                 const quotesRef = this.firestoreSDK.collection(this.db, "shipping_quotes");
                 const docRef = await this.firestoreSDK.addDoc(quotesRef, dataObject);
                 // console.log("Document written with ID: ", docRef.id);
-                
+
                 this.showToast("Thanks for trusting us! Our team will contact you shortly.", "success");
             } else {
                 console.log("Firestore not available, saving locally");
                 // Save to localStorage
                 this.saveToLocalStorage(dataObject);
-                
+
                 this.showToast("Thanks for trusting us! Our team will contact you shortly.", "success");
             }
-            
+
             // Clear form
             form.reset();
-            
+
         } catch (error) {
             console.error("Firestore save error:", {
                 code: error.code,
                 message: error.message,
                 stack: error.stack
             });
-            
+
             // Fallback to localStorage
             this.saveToLocalStorage(dataObject);
-            
+
             this.showToast("Thanks for trusting us! Our team will contact you shortly. If you're not contacted within 24 hours, please call us at (800) 555-1234.", "success");
         }
     }
@@ -283,24 +283,24 @@ class ShippingApplication {
     saveToLocalStorage(data) {
         try {
             let saved = JSON.parse(localStorage.getItem('offline_quotes') || '[]');
-            
+
             // Convert Firestore timestamp to string for localStorage
             const dataForStorage = { ...data };
             if (dataForStorage.createdAt && typeof dataForStorage.createdAt.toDate === 'function') {
                 dataForStorage.createdAt = dataForStorage.createdAt.toDate().toISOString();
             }
-            
+
             saved.push({
                 ...dataForStorage,
                 id: Date.now(),
                 synced: false
             });
-            
+
             // Keep only last 50
             if (saved.length > 50) {
                 saved = saved.slice(-50);
             }
-            
+
             localStorage.setItem('offline_quotes', JSON.stringify(saved));
             console.log("Data saved to localStorage");
         } catch (error) {
@@ -315,7 +315,7 @@ class ShippingApplication {
         this.burgerButton = document.getElementById('burger-menu-button');
         this.sidebar = document.getElementById('mobile-sidebar');
         this.overlay = document.getElementById('sidebar-overlay');
-        
+
         if (this.burgerButton && this.sidebar && this.overlay) {
             this.burgerButton.addEventListener('click', () => this.toggleMenu());
             this.overlay.addEventListener('click', () => this.toggleMenu());
@@ -352,15 +352,15 @@ class ShippingApplication {
 
     formatPhoneNumber(event) {
         let value = event.target.value.replace(/\D/g, '');
-        
+
         // Remove +1 if it was manually typed
         if (value.startsWith('1')) {
             value = value.substring(1);
         }
-        
+
         // Limit to 10 digits (US phone number)
         value = value.substring(0, 10);
-        
+
         if (value.length > 0) {
             event.target.value = this.buildPhoneFormat(value);
         }
@@ -368,7 +368,7 @@ class ShippingApplication {
 
     buildPhoneFormat(value) {
         let formatted = '+1 ';
-        
+
         if (value.length > 0) {
             formatted += '(' + value.substring(0, 3);
         }
@@ -378,7 +378,7 @@ class ShippingApplication {
         if (value.length > 6) {
             formatted += '-' + value.substring(6, 10);
         }
-        
+
         return formatted;
     }
 
@@ -387,7 +387,7 @@ class ShippingApplication {
     // =============================================
     initializeCounters() {
         this.setInitialCounterValues();
-        
+
         setTimeout(() => {
             this.startCounterAnimations();
         }, 500);
@@ -399,7 +399,7 @@ class ShippingApplication {
             statesCount: '0+',
             supportCount: '0/7'
         };
-        
+
         Object.entries(counters).forEach(([id, value]) => {
             const element = document.getElementById(id);
             if (element) {
@@ -417,7 +417,7 @@ class ShippingApplication {
     animateCounter(elementId, targetValue, suffix = '+', duration = 2000) {
         const element = document.getElementById(elementId);
         if (!element) return;
-        
+
         let startValue = 0;
         const increment = targetValue / (duration / 16);
 
@@ -446,7 +446,7 @@ class ShippingApplication {
     animateSupportCounter() {
         const supportElement = document.getElementById('supportCount');
         if (!supportElement) return;
-        
+
         let currentHours = 0;
         let currentMinutes = 0;
         const hoursTarget = 24;
@@ -477,7 +477,7 @@ class ShippingApplication {
 
         supportObserver.observe(supportElement);
     }
-    
+
     // =============================================
     // SECURITY HELPER METHODS
     // =============================================

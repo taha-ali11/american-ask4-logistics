@@ -92,4 +92,4 @@ Includes:
 
 Developed by:
 
-**AlphaGeeks**
+**AlphaGeeks** / **Taha Ali**

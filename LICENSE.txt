@@ -1,0 +1,10 @@
+This project was custom developed exclusively for American Ask4 Logistics.
+
+Ownership of the delivered website belongs to the client after final payment.
+
+The developer (AlphaGeeks / Taha Ali) retains the right to showcase this project in a portfolio unless otherwise agreed in writing.
+
+Redistribution or resale of this source code without written permission from AlphaGeeks is prohibited.
+
+© 2026 AlphaGeeks / Taha Ali
+All Rights Reserved.

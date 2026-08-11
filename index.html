@@ -63,6 +63,11 @@
     <link rel="icon" type="image/png" href="/src/assets/NLAFL-removebg-preview.png">
     <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="preload" as="image" href="/src/assets/Truck.Webp" media="(min-width: 481px)" fetchpriority="high">
     <link rel="preload" as="image" href="/src/assets/MSD.Webp" media="(max-width: 480px)" fetchpriority="high">
     <style id="tw-compiled">
@@ -2338,7 +2343,22 @@
         body {
             min-height: 100vh;
             margin: 0;
-            background-color: #f8f9fa
+            background-color: #f8f9fa;
+            font-family: 'Inter', ui-sans-serif, system-ui, sans-serif
+        }
+
+        .title-font {
+            font-family: 'Oswald', ui-sans-serif, system-ui, sans-serif
+        }
+
+        #home-section h1.title-font {
+            color: var(--accent-gold);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, .55)
+        }
+
+        #home-section p {
+            color: #FFF3D6;
+            text-shadow: 0 1px 6px rgba(0, 0, 0, .6)
         }
 
         #home-section {

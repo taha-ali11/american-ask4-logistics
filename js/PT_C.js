@@ -51,9 +51,9 @@ class PrivacyTermsPage {
         confirmation.className = "fixed top-4 right-4 bg-green-600 text-white p-4 rounded-lg shadow-lg z-50 max-w-sm animate-fade-in";
         confirmation.setAttribute("role", "status");
         confirmation.setAttribute("aria-live", "polite");
-        confirmation.innerHTML = `\n            <div class="flex items-center">\n                <i class="fas fa-check-circle text-xl mr-3" aria-hidden="true"></i>\n                <div>\n                    <p class="font-bold">Thank you!</p>\n                    <p class="text-sm">Your acknowledgment has been noted.</p>\n                </div>\n            </div>\n        `;
+        confirmation.innerHTML = `\n<div class="flex items-center">\n<i class="fas fa-check-circle text-xl mr-3" aria-hidden="true"></i>\n  <div>\n <p class="font-bold">Thank you!</p>\n <p class="text-sm">Your acknowledgment has been noted.</p>\n</div>\n </div>\n        `;
         const style = document.createElement("style");
-        style.textContent = `\n            @keyframes fadeIn {\n                from { opacity: 0; transform: translateY(-10px); }\n                to { opacity: 1; transform: translateY(0); }\n            }\n            .animate-fade-in {\n                animation: fadeIn 0.3s ease-out;\n            }\n        `;
+        style.textContent = `\n @keyframes fadeIn {\n from { opacity: 0; transform: translateY(-10px); }\n to { opacity: 1; transform: translateY(0); }\n            }\n            .animate-fade-in {\n   animation: fadeIn 0.3s ease-out;\n     }\n        `;
         document.head.appendChild(style);
         document.body.appendChild(confirmation);
         setTimeout(() => {
@@ -68,7 +68,7 @@ class PrivacyTermsPage {
     saveAcknowledgment() {
         try {
             localStorage.setItem("termsAcknowledged", (new Date).toISOString());
-        } catch (error) {}
+        } catch (error) { }
     }
     setupSmoothScrolling() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -129,8 +129,8 @@ class PrivacyTermsPage {
         });
         this.checkPreviousAcknowledgment();
     }
-    onPageHidden() {}
-    onPageVisible() {}
+    onPageHidden() { }
+    onPageVisible() { }
     handleKeyboardShortcuts(e) {
         if ((e.ctrlKey || e.metaKey) && e.key === "p") {
             e.preventDefault();
@@ -155,7 +155,7 @@ class PrivacyTermsPage {
                 this.acceptTermsButton.classList.add("from-gray-600", "to-gray-800");
                 this.acceptTermsButton.disabled = true;
             }
-        } catch (error) {}
+        } catch (error) { }
     }
     debounce(func, wait) {
         let timeout;
@@ -170,7 +170,7 @@ class PrivacyTermsPage {
     }
     throttle(func, limit) {
         let inThrottle;
-        return function(...args) {
+        return function (...args) {
             if (!inThrottle) {
                 func.apply(this, args);
                 inThrottle = true;
@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 if (!("scrollBehavior" in document.documentElement.style)) {
-    import("scroll-behavior-polyfill").then(module => {});
+    import("scroll-behavior-polyfill").then(module => { });
 }
-window.addEventListener("error", event => {});
-window.addEventListener("unhandledrejection", event => {});
+window.addEventListener("error", event => { });
+window.addEventListener("unhandledrejection", event => { });

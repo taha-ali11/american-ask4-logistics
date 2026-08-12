@@ -31,9 +31,41 @@ class ShippingApplication {
             this.initializeFirebase();
         }, 1e3);
     }
+    loadFirebaseSDK() {
+        if (window.firebaseSDK) {
+            return Promise.resolve(window.firebaseSDK);
+        }
+        if (!window._firebaseSDKPromise) {
+            window._firebaseSDKPromise = Promise.all([
+                import('https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js'),
+                import('https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore-lite.js'),
+                import('https://www.gstatic.com/firebasejs/12.15.0/firebase-analytics.js')
+            ]).then(([appMod, fsMod, analyticsMod]) => {
+                const sdk = {
+                    initializeApp: appMod.initializeApp,
+                    getApps: appMod.getApps,
+                    getApp: appMod.getApp,
+                    getFirestore: fsMod.getFirestore,
+                    collection: fsMod.collection,
+                    doc: fsMod.doc,
+                    setDoc: fsMod.setDoc,
+                    addDoc: fsMod.addDoc,
+                    serverTimestamp: fsMod.serverTimestamp,
+                    getAnalytics: analyticsMod.getAnalytics,
+                    isSupported: analyticsMod.isSupported
+                };
+                window.firebaseSDK = sdk;
+                return sdk;
+            }).catch(error => {
+                console.error("Firebase SDK load error:", error);
+                return null;
+            });
+        }
+        return window._firebaseSDKPromise;
+    }
     async initializeFirebase() {
         try {
-            const sdk = window.firebaseSDK;
+            const sdk = await this.loadFirebaseSDK();
             if (!sdk) {
                 return;
             }

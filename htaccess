@@ -1,3 +1,21 @@
+# === Correct MIME types (required for fonts to load on some Apache configs) ===
+<IfModule mod_mime.c>
+    AddType font/woff2 .woff2
+    AddType font/woff .woff
+    AddType font/ttf .ttf
+    AddType font/otf .otf
+    AddType application/vnd.ms-fontobject .eot
+    AddType text/css .css
+    AddType application/javascript .js
+</IfModule>
+
+# Allow cross-origin font loading (needed if CDN/subdomain ever serves assets)
+<IfModule mod_headers.c>
+    <FilesMatch "\.(woff2|woff|ttf|otf|eot)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
+
 # === Compression ===
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json application/ld+json image/svg+xml font/ttf font/otf application/vnd.ms-fontobject
